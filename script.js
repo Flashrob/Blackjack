@@ -28,7 +28,7 @@ const startGame = function () {
     //display score
     display()
     //event listener for hit button
-    hitCard()
+    hitButton()
     //event listener for stand button
     stand()
     //check for instant win after dealing cards
@@ -50,15 +50,15 @@ const stand = function () {
     })
 }
 
-const hitCard = function () {
+
+
+const hitButton = function () {
     const hit = document.querySelector("#hit")
     hit.addEventListener("click", function () {
         //if it is playerOne's turn, get another card and remove card from deck
         if (!game.gameOver) {
             if (game.playerTurn) {
-                game.players[0].cards.push(deck[0])
-                game.players[0].totalValue = game.players[0].totalValue + deck[0].weight
-                deck.shift()
+                hitCard(0)
                 //display the card
                 display()
                 //check for blackjack
@@ -92,7 +92,7 @@ const checkForLoss = function () {
         game.gameOver = true
         alert("player loses")
         return true
-    } else if (game.players[game.players.length-1].totalValue > 21) {
+    } else if (game.players[game.players.length - 1].totalValue > 21) {
         game.gameOver = true
         alert("house loses!")
         return true
@@ -101,17 +101,17 @@ const checkForLoss = function () {
 
 const determineWinner = function () {
     //if player has higher value than dealer, player wins, game over
-    if (game.players[0].totalValue > game.players[game.players.length-1].totalValue) {
+    if (game.players[0].totalValue > game.players[game.players.length - 1].totalValue) {
         game.gameOver = true
         alert("player wins!")
         return true
         //if player has lower value than dealer, dealer wins, game over
-    } else if (game.players[0].totalValue < game.players[game.players.length-1].totalValue) {
+    } else if (game.players[0].totalValue < game.players[game.players.length - 1].totalValue) {
         game.gameOver = true
         alert("house wins!")
         return true
         //if player and dealer have the same value, push(draw) and return the bets.
-    } else if (game.players[0].totalValue === game.players[game.players.length-1].totalValue){
+    } else if (game.players[0].totalValue === game.players[game.players.length - 1].totalValue) {
         game.gameOver = true
         alert("Push! Bets returned!")
         return true
@@ -121,13 +121,11 @@ const determineWinner = function () {
 const dealerAi = function () {
     if (!game.gameOver) {
         //house at least 17, determine winner
-        if (game.players[game.players.length-1].totalValue >= 17) {
+        if (game.players[game.players.length - 1].totalValue >= 17) {
             determineWinner()
             //house lower than 17 and lower than player one, push new card into deck(hit)
-        } else if (game.players[game.players.length-1].totalValue < 17) {
-            game.players[game.players.length-1].cards.push(deck[0])
-            game.players[game.players.length-1].totalValue = game.players[game.players.length-1].totalValue + deck[0].weight
-            deck.shift()
+        } else if (game.players[game.players.length - 1].totalValue < 17) {
+            hitCard(game.players.length-1)
             //display new score
             display()
             //check for blackjack
@@ -142,22 +140,13 @@ const dealerAi = function () {
     }
 }
 
-//display the score
-const display = function () {
-    //select text div and reset content
-    const text = document.querySelector(".text")
-    text.innerHTML = ""
-    //loop through all players
-    for (let i = 0; i < game.players.length; i++) {
-        //create a div and p for each player
-        const div = document.createElement("div")
-        const p = document.createElement("p")
-        //set content to player cards value
-        p.textContent = `${game.players[i].name}: Value ${game.players[i].totalValue}`
-        //append divs to text div, and paragraphs to divs
-        text.appendChild(div)
-        div.appendChild(p)
-    }
+//draw new card and push into array
+const hitCard = function (player) {
+    //push new card from deck into players card array
+    game.players[player].cards.push(deck[0])
+    game.players[player].totalValue = game.players[player].totalValue + deck[0].weight
+    //remove the card from the deck
+    deck.shift()
 }
 
 startGame()

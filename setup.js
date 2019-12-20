@@ -51,9 +51,25 @@ const dealCards = function () {
     //deal two cards to each player
     for (let i = 0; i < game.players.length; i++) {
         for (let j = 0; j < 2; j++) {
-            game.players[i].cards.push(deck[0])
-            game.players[i].totalValue = game.players[i].totalValue + deck[0].weight
-            deck.shift()
+            hitCard(i)
         }
+    }
+}
+
+//display the score
+const display = function () {
+    //select text div and reset content
+    const text = document.querySelector(".text")
+    text.innerHTML = ""
+    //loop through all players
+    for (let i = 0; i < game.players.length; i++) {
+        //create a div and p for each player
+        const div = document.createElement("div")
+        const p = document.createElement("p")
+        //set content to player cards value
+        p.textContent = `${game.players[i].name}: Value ${game.players[i].totalValue}`
+        //append divs to text div, and paragraphs to divs
+        text.appendChild(div)
+        div.appendChild(p)
     }
 }
