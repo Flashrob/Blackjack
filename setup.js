@@ -1,9 +1,10 @@
 //basic card arrays
 const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
 const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
-const deck = []
+let deck = []
 
 const createDeck = function () {
+    deck = []
     //loop through suits and values arrays, to create a full deck in the deck object
     for (let i = 0; i < values.length; i++) {
         for (let j = 0; j < suits.length; j++) {

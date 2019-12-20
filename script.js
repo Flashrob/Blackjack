@@ -1,4 +1,7 @@
 "use strict"
+// BUG WITH RETRY, STAND DOESNT WORK ANYMORE
+// RETRY PUSHES 2 VARDS INTO ARRAY ON EVERY RUN
+
 const game = {
     players: [{
             name: "playerOne",
@@ -31,6 +34,8 @@ const startGame = function () {
     hitButton()
     //event listener for stand button
     stand()
+    //event listener for retry button
+    retry()
     //check for instant win after dealing cards
     blackjack()
 }
@@ -147,6 +152,22 @@ const hitCard = function (player) {
     game.players[player].totalValue = game.players[player].totalValue + deck[0].weight
     //remove the card from the deck
     deck.shift()
+}
+
+const retry = function(){
+    const retry = document.querySelector("#retry")
+    retry.addEventListener("click", function(){
+        game.gameOver = false
+        for (let i = 0; i < game.players.length; i++){
+            game.players[i].totalValue = 0
+        }
+        //create, shuffle the deck and deal two cards
+        createDeck()
+        //display score
+        display()
+        //check for instant win after dealing cards
+        blackjack()
+    })
 }
 
 startGame()
