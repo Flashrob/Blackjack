@@ -68,7 +68,7 @@ const display = function () {
         const div = document.createElement("div")
         const p = document.createElement("p")
         //set content to player cards value
-        p.textContent = `${game.players[i].name}: Value ${game.players[i].totalValue}`
+        p.textContent = `${game.players[i].name}: Value ${game.players[i].totalValue} and Cards: ${game.players[i].cards[0].value} and ${game.players[i].cards[1].value}`
         //append divs to text div, and paragraphs to divs
         text.appendChild(div)
         div.appendChild(p)
