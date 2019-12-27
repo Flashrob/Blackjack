@@ -54,11 +54,14 @@ const blackjack = function () {
     }
 }
 
+//retry button function
 const retry = function () {
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function () {
+        //on click reset playerTurn and gameOver false
         game.playerTurn = true
         game.gameOver = false
+        //reset totalValue and cards in Hand for players
         for (let i = 0; i < game.players.length; i++) {
             game.players[i].totalValue = 0
             game.players[i].cards = []

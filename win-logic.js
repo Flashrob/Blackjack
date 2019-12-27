@@ -15,7 +15,6 @@ const adjustForAce = function(player){
             return true
         }
     }
-
 }
 
 const checkForLoss = function () {

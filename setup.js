@@ -1,3 +1,15 @@
+// TODO
+// IMPROVE CSS FOR HOUSE AND PLAYER
+    // - add borders for value text(inspiration from other BJ games?)
+    // - make card boxes and buttons fixed position
+    // - make nicer buttons (Bootstrap?)
+    // - Visible line between players and house
+    // - Maybe some writing on the table, curved from top to top
+// NOTIFICATIONS
+    // - win or loss message, blackjack message, ace adjustment message
+    // - retry button appear
+// REFACTOR JS
+
 let deck = []
 
 const createDeck = function () {
@@ -69,13 +81,13 @@ const displayCards = function () {
         item.innerHTML = ""
     })
     houseCards.innerHTML = ""
-    //display cards for house
+    //display cards for house in houseCards div
     for (let k = 0; k < game.players[game.players.length-1].cards.length; k++){
         const img = document.createElement("img")
             img.setAttribute("src", `${game.players[game.players.length-1].cards[k].image}`)
             houseCards.appendChild(img)
     }
-    //display cards for all players
+    //display cards for all players in cards div
     for (let i = 0; i < game.players.length - 1; i++){
         for (let j = 0; j < game.players[i].cards.length; j++){
             const img = document.createElement("img")
@@ -87,7 +99,7 @@ const displayCards = function () {
 
 //display the score
 const display = function () {
-    //select text div and reset content
+    //select text div and reset content for player
     const text = document.querySelector(".text")
     text.innerHTML = ""
     //loop through all players
@@ -102,16 +114,18 @@ const display = function () {
         text.appendChild(div)
         div.appendChild(p)
     }
+    //select text div and reset content for house
     const textHouse = document.querySelector(".house-text")
-
     textHouse.innerHTML = ""
+    //create a div and p for the house
     const divHouse = document.createElement("div")
     const pHouse = document.createElement("p")
+    //set text content to house cards value
     pHouse.textContent = `${game.players[game.players.length-1].name}: Value ${game.players[game.players.length-1].totalValue}`
-
+    //repeat as above
     textHouse.appendChild(divHouse)
     divHouse.appendChild(pHouse)
 
-
+    //display the cards
     displayCards()
 }
