@@ -1,6 +1,4 @@
 "use strict"
-// BUG WITH RETRY, STAND DOESNT WORK ANYMORE
-// RETRY PUSHES 2 VARDS INTO ARRAY ON EVERY RUN
 
 const game = {
     players: [{
@@ -40,12 +38,34 @@ const startGame = function () {
     blackjack()
 }
 
+const dealerAi = function () {
+    if (!game.gameOver) {
+        //house at least 17, determine winner
+        if (game.players[1].totalValue >= 17) {
+            determineWinner()
+            //house lower than 17 and lower than player one, push new card into deck(hit)
+        } else if (game.players[1].totalValue < 17) {
+            hitCard(1)
+            //display new score
+            display()
+            //check for blackjack
+            blackjack()
+            //if not blackjack, no game over, check for loss
+            if (!game.gameOver) {
+                checkForLoss()
+            }
+        }
+        //run dealer Ai again, until game is over
+        dealerAi()
+    }
+}
+
 //stand button click function
 const stand = function () {
     const stand = document.querySelector("#stand")
     stand.addEventListener("click", function () {
         //on click, if not game over, set player turn to false, start dealer AI
-        if (!game.gameOver) {
+        if (game.gameOver === false) {
             if (game.playerTurn) {
                 game.playerTurn = false
                 dealerAi()
@@ -123,27 +143,7 @@ const determineWinner = function () {
     }
 }
 
-const dealerAi = function () {
-    if (!game.gameOver) {
-        //house at least 17, determine winner
-        if (game.players[game.players.length - 1].totalValue >= 17) {
-            determineWinner()
-            //house lower than 17 and lower than player one, push new card into deck(hit)
-        } else if (game.players[game.players.length - 1].totalValue < 17) {
-            hitCard(game.players.length-1)
-            //display new score
-            display()
-            //check for blackjack
-            blackjack()
-            //if not blackjack, no game over, check for loss
-            if (!game.gameOver) {
-                checkForLoss()
-            }
-        }
-        //run dealer Ai again, until game is over
-        dealerAi()
-    }
-}
+
 
 //draw new card and push into array
 const hitCard = function (player) {
@@ -157,9 +157,11 @@ const hitCard = function (player) {
 const retry = function(){
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function(){
+        game.playerTurn = true
         game.gameOver = false
         for (let i = 0; i < game.players.length; i++){
             game.players[i].totalValue = 0
+            game.players[i].cards = []
         }
         //create, shuffle the deck and deal two cards
         createDeck()
