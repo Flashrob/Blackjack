@@ -1,4 +1,54 @@
 body, html {
     width: 100%;
-    height: 100%;;
+    height: 100%;
+    background-image: url(images/felt.png);
+
+}
+
+img {
+    width: 90px;
+    margin: 5px;
+}
+
+#top {
+    height: 45%;
+}
+
+.house {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+}
+
+.card-container {
+    padding-left: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.first-player .cards {
+    border: 1px solid white;
+    padding: 2px;
+}
+
+.casino .house-cards {
+    border: 1px solid rgb(214, 195, 17);
+    padding: 2px;
+}
+
+.cards, .house-cards {
+    display: flex;
+    justify-content: center;
+}
+
+.text, .house-text {
+    color: white; 
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    padding-bottom: 10px;
+    padding-left: 5%;
 }
