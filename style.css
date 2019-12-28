@@ -1,8 +1,20 @@
-body, html {
+body,
+html {
     width: 100%;
     height: 100%;
     background-image: url(images/felt.png);
+    -moz-box-shadow: inset 0 0 500px #000000;
+    -webkit-box-shadow: inset 0 0 500px #000000;
+    box-shadow: inset 0 0 500px #000000;
+}
 
+h3 {
+    font-size: 20px!important;
+}
+
+p {
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .header {
@@ -22,34 +34,47 @@ img {
     margin: 5px;
 }
 
-.cards, .house-cards {
+.cards,
+.house-cards {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
 }
 
 #top {
-    height: 45%;
+    height: 48%;
     border-bottom: 5px solid rgba(214, 195, 17, 0.3);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .house {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 3%;
+    padding-top: 5px;
 }
 
 .casino .house-cards {
     border: 1px solid rgb(214, 195, 17);
     padding: 2px;
+    width: 80%;
 }
 
-#retry {
+.notification {
     position: absolute;
     top: 10%;
     left: 10%;
+
+}
+
+#retry {
     font-size: 30px;
+}
+
+.message {
+    color: white;
+    margin-top: 10px;
+    font-size: 4em;
 }
 
 .card-container {
@@ -58,24 +83,28 @@ img {
     justify-content: space-around;
 }
 
-.player {
+.player, .casino {
     width: 200px;
+    text-align: center;
+    color: white;
 }
 
 .first-player .cards {
     border: 1px solid white;
     padding: 2px;
+    width: 80%;
+    margin-bottom: 2px;
 }
 
-
-.text, .house-text {
-    color: white; 
+.text,
+.house-text {
+    color: white;
     display: flex;
     justify-content: center;
     border: 3px solid rgb(112, 20, 20);
     border-left: none;
     border-right: none;
-    margin: 10px ;
+    margin: 7px;
 }
 
 .text p {
@@ -93,7 +122,6 @@ img {
 }
 
 .buttons {
-    padding-bottom: 10px;
     padding-left: 5%;
     display: flex;
     justify-content: space-evenly;
@@ -105,9 +133,21 @@ img {
     z-index: 0;
 }
 
+.house-card-0 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
 .card-image-1 {
     position: absolute;
     left: 12%;
+    z-index: 1;
+}
+
+.house-card-1 {
+    position: absolute;
+    left: 46.5%;
     z-index: 1;
 }
 
@@ -117,10 +157,22 @@ img {
     left: 14%;
 }
 
+.house-card-2 {
+    position: absolute;
+    left: 48.7%;
+    z-index: 2;
+}
+
 .card-image-3 {
     position: absolute;
     z-index: 3;
     left: 16%;
+}
+
+.house-card-3 {
+    position: absolute;
+    left: 51.2%;
+    z-index: 3;
 }
 
 .card-image-4 {
@@ -129,25 +181,23 @@ img {
     left: 18%;
 }
 
+.house-card-4 {
+    position: absolute;
+    left: 53.5%;
+    z-index: 4;
+}
+
 .btn {
-    color: white!important;
+    color: white !important;
 }
 
 .btn-outline-danger {
-    border-color: rgb(112, 20, 20)!important;
+    border-color: rgb(112, 20, 20) !important;
 }
 
 .btn-outline-danger:hover {
-    background-color: rgb(112, 20, 20)!important;
+    background-color: rgb(112, 20, 20) !important;
 }
-
-.circle-text {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    z-index: 1;
-}
-
 
 .btn.active.focus,
 .btn.active:focus,
@@ -155,9 +205,9 @@ img {
 .btn.focus:active,
 .btn:active:focus,
 .btn:focus {
-  outline: 0 !important;
-  outline-offset: 0  !important;
-  background-image: none  !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none  !important;
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    background-image: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }

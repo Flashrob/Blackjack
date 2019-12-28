@@ -18,7 +18,6 @@ const stand = function () {
                 dealerAi()
             }
         }
-
     })
 }
 
@@ -44,16 +43,6 @@ const hitButton = function () {
     })
 }
 
-//check each player, if their card value is 21 for instant win
-const blackjack = function () {
-    for (let i = 0; i < game.players.length; i++) {
-        if (game.players[i].totalValue === 21) {
-            game.gameOver = true
-            return alert(`BLACKJACK by ${game.players[i].name}`)
-        }
-    }
-}
-
 //retry button function
 const retry = function () {
     const retry = document.querySelector("#retry")
@@ -76,6 +65,8 @@ const retry = function () {
         for (let i = 0; i < game.players.length; i++) {
             adjustForAce(game.players[i])
         }
+        //make retry button disappear
+        displayRetry()
     })
 }
 
@@ -96,4 +87,10 @@ const startGame = function () {
     for (let i = 0; i < game.players.length; i++) {
         adjustForAce(game.players[i])
     }
+}
+
+//display retry button
+const displayRetry = function () {
+    const retry = document.querySelector("#retry")
+    retry.classList.toggle("d-none")
 }

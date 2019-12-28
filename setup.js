@@ -1,10 +1,11 @@
 // TODO
-// NOTIFICATIONS
-    // - win or loss message, blackjack message, ace adjustment message
-    // - retry button appear
-// REFACTOR JS
+// ADD OTHER PLAYERS
+// ADD BETTING
+// ADD EXTRA FEATURES
+// MAKE LAYOUT RESPONSIVE
 
 let deck = []
+const message = document.querySelector(".message")
 
 const createDeck = function () {
     const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
@@ -30,7 +31,7 @@ const createDeck = function () {
                 weight: weight,
                 image: `images/${suits[j][0]}${values[i]}.png`
             }
-            
+
             //push card object to deck
             deck.push(card)
             game.gameOver = false
@@ -67,28 +68,33 @@ const dealCards = function () {
 
 //display the cards
 const displayCards = function () {
-    
+
     const cards = document.querySelectorAll(".cards")
     const houseCards = document.querySelector(".house-cards")
-    cards.forEach(function(item){
+    //reset card display
+    cards.forEach(function (item) {
         item.innerHTML = ""
     })
     houseCards.innerHTML = ""
+
     //display cards for house in houseCards div
-    for (let k = 0; k < game.players[game.players.length-1].cards.length; k++){
+    for (let k = 0; k < game.players[game.players.length - 1].cards.length; k++) {
         const img = document.createElement("img")
-            img.setAttribute("src", `${game.players[game.players.length-1].cards[k].image}`)
-            houseCards.appendChild(img)
+        img.setAttribute("src", `${game.players[game.players.length-1].cards[k].image}`)
+        img.className = `house-card-${k}`
+        houseCards.appendChild(img)
     }
+
     //display cards for all players in cards div
-    for (let i = 0; i < game.players.length - 1; i++){
-        for (let j = 0; j < game.players[i].cards.length; j++){
+    for (let i = 0; i < game.players.length - 1; i++) {
+        for (let j = 0; j < game.players[i].cards.length; j++) {
             const img = document.createElement("img")
             img.setAttribute("src", `${game.players[i].cards[j].image}`)
             img.className = `card-image-${j}`
             cards[i].appendChild(img)
         }
     }
+
 }
 
 //display the score
@@ -96,25 +102,27 @@ const display = function () {
     //select text div and reset content for player
     const text = document.querySelector(".text")
     text.innerHTML = ""
+    message.textContent = ""
+
     //loop through all players
     for (let i = 0; i < game.players.length - 1; i++) {
         //create p for each player
         const p = document.createElement("p")
         //set content to player cards value
-        p.textContent = `${game.players[i].name}: ${game.players[i].totalValue}`
-        //append divs to text div, and paragraphs to divs
+        p.textContent = `${game.players[i].totalValue}`
+        //append paragraph to text div
         text.appendChild(p)
     }
+
     //select text div and reset content for house
     const textHouse = document.querySelector(".house-text")
     textHouse.innerHTML = ""
     //create a p for the house
     const pHouse = document.createElement("p")
     //set text content to house cards value
-    pHouse.textContent = `${game.players[game.players.length-1].name}: ${game.players[game.players.length-1].totalValue}`
-    //repeat as above
+    pHouse.textContent = `${game.players[game.players.length-1].totalValue}`
+    //append house p to text div
     textHouse.appendChild(pHouse)
-
     //display the cards
     displayCards()
 }

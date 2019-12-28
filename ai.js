@@ -1,11 +1,12 @@
 const dealerAi = function () {
     if (!game.gameOver) {
+        const house = game.players.length - 1
         //house at least 17, determine winner
-        if (game.players[game.players.length - 1].totalValue >= 17) {
+        if (game.players[house].totalValue >= 17) {
             determineWinner()
             //house lower than 17 and lower than player one, push new card into deck(hit)
-        } else if (game.players[game.players.length - 1].totalValue < 17) {
-            hitCard(1)
+        } else if (game.players[house].totalValue < 17) {
+            hitCard(house)
             //display new score
             display()
             //check for blackjack
