@@ -1,10 +1,4 @@
 // TODO
-// IMPROVE CSS FOR HOUSE AND PLAYER
-    // - add borders for value text(inspiration from other BJ games?)
-    // - make card boxes and buttons fixed position
-    // - make nicer buttons (Bootstrap?)
-    // - Visible line between players and house
-    // - Maybe some writing on the table, curved from top to top
 // NOTIFICATIONS
     // - win or loss message, blackjack message, ace adjustment message
     // - retry button appear
@@ -75,7 +69,6 @@ const dealCards = function () {
 const displayCards = function () {
     
     const cards = document.querySelectorAll(".cards")
-    console.log(cards)
     const houseCards = document.querySelector(".house-cards")
     cards.forEach(function(item){
         item.innerHTML = ""
@@ -92,6 +85,7 @@ const displayCards = function () {
         for (let j = 0; j < game.players[i].cards.length; j++){
             const img = document.createElement("img")
             img.setAttribute("src", `${game.players[i].cards[j].image}`)
+            img.className = `card-image-${j}`
             cards[i].appendChild(img)
         }
     }
@@ -104,27 +98,22 @@ const display = function () {
     text.innerHTML = ""
     //loop through all players
     for (let i = 0; i < game.players.length - 1; i++) {
-        //create a div and p for each player
-        const div = document.createElement("div")
+        //create p for each player
         const p = document.createElement("p")
         //set content to player cards value
-        p.textContent = `${game.players[i].name}: Value ${game.players[i].totalValue}`
-
+        p.textContent = `${game.players[i].name}: ${game.players[i].totalValue}`
         //append divs to text div, and paragraphs to divs
-        text.appendChild(div)
-        div.appendChild(p)
+        text.appendChild(p)
     }
     //select text div and reset content for house
     const textHouse = document.querySelector(".house-text")
     textHouse.innerHTML = ""
-    //create a div and p for the house
-    const divHouse = document.createElement("div")
+    //create a p for the house
     const pHouse = document.createElement("p")
     //set text content to house cards value
-    pHouse.textContent = `${game.players[game.players.length-1].name}: Value ${game.players[game.players.length-1].totalValue}`
+    pHouse.textContent = `${game.players[game.players.length-1].name}: ${game.players[game.players.length-1].totalValue}`
     //repeat as above
-    textHouse.appendChild(divHouse)
-    divHouse.appendChild(pHouse)
+    textHouse.appendChild(pHouse)
 
     //display the cards
     displayCards()

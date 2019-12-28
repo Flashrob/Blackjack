@@ -7,7 +7,7 @@ const game = {
             totalValue: 0,
             cash: 0
         }, {
-            name: "house",
+            name: "House",
             cards: [],
             totalValue: 0,
             losses: 0

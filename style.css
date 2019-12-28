@@ -5,13 +5,32 @@ body, html {
 
 }
 
+.header {
+    position: absolute;
+    z-index: 1;
+    color: rgba(214, 195, 17, 0.3);
+    right: 2%;
+    top: 12%;
+    font-size: 5em;
+    transform: rotate(-25deg);
+    letter-spacing: 10px;
+    font-weight: 600;
+}
+
 img {
     width: 90px;
     margin: 5px;
 }
 
+.cards, .house-cards {
+    display: flex;
+    justify-content: center;
+}
+
 #top {
     height: 45%;
+    border-bottom: 5px solid rgba(214, 195, 17, 0.3);
+    margin-bottom: 15px;
 }
 
 .house {
@@ -21,10 +40,26 @@ img {
     padding-top: 3%;
 }
 
+.casino .house-cards {
+    border: 1px solid rgb(214, 195, 17);
+    padding: 2px;
+}
+
+#retry {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 30px;
+}
+
 .card-container {
     padding-left: 50px;
     display: flex;
     justify-content: space-around;
+}
+
+.player {
+    width: 200px;
 }
 
 .first-player .cards {
@@ -32,23 +67,97 @@ img {
     padding: 2px;
 }
 
-.casino .house-cards {
-    border: 1px solid rgb(214, 195, 17);
-    padding: 2px;
-}
-
-.cards, .house-cards {
-    display: flex;
-    justify-content: center;
-}
 
 .text, .house-text {
     color: white; 
     display: flex;
     justify-content: center;
+    border: 3px solid rgb(112, 20, 20);
+    border-left: none;
+    border-right: none;
+    margin: 10px ;
+}
+
+.text p {
+    height: 100%;
+    padding: 10px 0 12px 0;
+    margin-bottom: 0;
+    align-self: center;
+}
+
+.house-text p {
+    height: 100%;
+    padding: 10px 0 12px 0;
+    margin-bottom: 0;
+    align-self: center;
 }
 
 .buttons {
     padding-bottom: 10px;
     padding-left: 5%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-image-0 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
+.card-image-1 {
+    position: absolute;
+    left: 12%;
+    z-index: 1;
+}
+
+.card-image-2 {
+    position: absolute;
+    z-index: 2;
+    left: 14%;
+}
+
+.card-image-3 {
+    position: absolute;
+    z-index: 3;
+    left: 16%;
+}
+
+.card-image-4 {
+    position: absolute;
+    z-index: 4;
+    left: 18%;
+}
+
+.btn {
+    color: white!important;
+}
+
+.btn-outline-danger {
+    border-color: rgb(112, 20, 20)!important;
+}
+
+.btn-outline-danger:hover {
+    background-color: rgb(112, 20, 20)!important;
+}
+
+.circle-text {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    z-index: 1;
+}
+
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+  outline: 0 !important;
+  outline-offset: 0  !important;
+  background-image: none  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important;
 }
