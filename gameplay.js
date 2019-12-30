@@ -48,8 +48,7 @@ const dealNewHand = function () {
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function () {
 
-        enableBetButtons()
-        disableActionButtons()
+        
         //on click reset playerTurn and gameOver false
         game.playerTurn = true
         game.turnOver = false
@@ -64,16 +63,20 @@ const dealNewHand = function () {
         display()
         //check for instant win after dealing cards
         blackjack()
-        if (blackjack()) {
-            document.querySelector(".message").classList.add("d-none")
-        }
+        
         //instant adjust for ace, if two aces were drawn after retry
         for (let i = 0; i < game.players.length; i++) {
             adjustForAce(game.players[i])
         }
+
+        enableBetButtons()
+        disableActionButtons()
+        document.querySelector(".message").classList.add("d-none")
+
         //make retry button disappear
         displayNewHand()
         deactivateCardDisplay()
+        balance.innerHTML = `Place bet! Your Balance: ${game.players[0].balance}`
     })
 }
 

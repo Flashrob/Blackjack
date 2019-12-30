@@ -1,4 +1,13 @@
 const betEvent = function () {
+
+    const controlButtonActivity = function(){
+        //display possible Blackjack message
+        document.querySelector(".message").classList.remove("d-none")
+        //disable bet buttons after bet and enable action buttons
+        disableBetButtons()
+        enableActionButtons()
+    }
+
     //disable action buttons
     disableActionButtons()
 
@@ -11,16 +20,15 @@ const betEvent = function () {
     //event listener for $10 Button
     ten.addEventListener("click", function () {
         if (!game.betMade) {
+            //display possible instant blackjack message
+            document.querySelector(".message").classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((game.players[0].balance - 10) >= 0) {
                 game.players[0].currentBet = 10
                 game.players[0].balance = game.players[0].balance - game.players[0].currentBet
                 balance.innerHTML = `Your Balance: ${game.players[0].balance}`
-                //display possible Blackjack message
-                document.querySelector(".message").classList.remove("d-none")
-                //disable bet buttons after bet and enable action buttons
-                disableBetButtons()
-                enableActionButtons()
+                //makes bet buttons disabled and activates action buttons
+                controlButtonActivity()
                 //if game hasnt started yet, start the game
                 if (!game.gameStart) {
                     startGame()
@@ -37,16 +45,15 @@ const betEvent = function () {
     //event listener for $25 Button
     twentyFive.addEventListener("click", function () {
         if (!game.betMade) {
+            //display possible instant blackjack message
+            document.querySelector(".message").classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((game.players[0].balance - 25) >= 0) {
                 game.players[0].currentBet = 25
                 game.players[0].balance = game.players[0].balance - game.players[0].currentBet
                 balance.innerHTML = `Your Balance: ${game.players[0].balance}`
-                //display possible Blackjack message
-                document.querySelector(".message").classList.remove("d-none")
-                //disable bet buttons after bet and enable action buttons
-                disableBetButtons()
-                enableActionButtons()
+               //makes bet buttons disabled and activates action buttons
+               controlButtonActivity()
                 //if game hasnt started yet, start the game
                 if (!game.gameStart) {
                     startGame()
@@ -63,16 +70,15 @@ const betEvent = function () {
     //event listener for $50 Button
     fifty.addEventListener("click", function () {
         if (!game.betMade) {
+            //display possible instant blackjack message
+            document.querySelector(".message").classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((game.players[0].balance - 50) >= 0) {
                 game.players[0].currentBet = 50
                 game.players[0].balance = game.players[0].balance - game.players[0].currentBet
                 balance.innerHTML = `Your Balance: ${game.players[0].balance}`
-                //display possible Blackjack message
-                document.querySelector(".message").classList.remove("d-none")
-                //disable bet buttons after bet and enable action buttons
-                disableBetButtons()
-                enableActionButtons()
+                //makes bet buttons disabled and activates action buttons
+               controlButtonActivity()
                 //if game hasnt started yet, start the game
                 if (!game.gameStart) {
                     startGame()
@@ -89,14 +95,14 @@ const betEvent = function () {
     //event listener for All-in Button
     all.addEventListener("click", function () {
         if (!game.betMade) {
+            //display possible instant blackjack message
+            document.querySelector(".message").classList.remove("d-none")
+            //all in, bet amount is full balance and balance is set to 0
             game.players[0].currentBet = game.players[0].balance
             game.players[0].balance = game.players[0].balance - game.players[0].currentBet
             balance.innerHTML = `Your Balance: ${game.players[0].balance}`
-            //display possible Blackjack message
-            document.querySelector(".message").classList.remove("d-none")
-            //disable bet buttons after bet and enable action buttons
-            disableBetButtons()
-            enableActionButtons()
+            //makes bet buttons disabled and activates action buttons
+            controlButtonActivity()
             //if game hasnt started yet, start the game
             if (!game.gameStart) {
                 startGame()
@@ -109,6 +115,7 @@ const betEvent = function () {
         }
     })
 }
+
 
 //select all bet and action buttons
 const allBets = document.querySelectorAll(".bet-buttons button")
