@@ -17,7 +17,7 @@
 <body>
   <h1 class="header">Blackjack</h1>
   <div class="notification">
-    <button id="retry" class="btn btn-outline-danger d-none">Retry</button>
+    <button id="retry" class="btn btn-outline-danger d-none">Next Hand!</button>
     <h2 class="message"></h2>
   </div>
 
@@ -29,8 +29,16 @@
         <div class="house-text"></div>
       </div>
     </div>
+    <h5 id="balance">Place bet! Your Balance: 100</h5>
   </div>
   <div id="bottom">
+    <div class="bet-buttons">
+      <h5>Bets</h5>
+      <button id="ten" class="btn btn-warning">$10</button>
+      <button id="twentyfive" class="btn btn-warning">$25</button>
+      <button id="fifty" class="btn btn-warning">$50</button>
+      <button id="all-in" class="btn btn-warning">ALL-IN</button>
+    </div>
     <div class="card-container">
       <div class="player first-player">
         <div class="buttons">
@@ -59,6 +67,7 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="setup.js"></script>
+  <script src="betting.js"></script>
   <script src="win-logic.js"></script>
   <script src="ai.js"></script>
   <script src="gameplay.js"></script>

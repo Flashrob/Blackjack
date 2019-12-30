@@ -12,7 +12,7 @@ const stand = function () {
     const stand = document.querySelector("#stand")
     stand.addEventListener("click", function () {
         //on click, if not game over, set player turn to false, start dealer AI
-        if (game.gameOver === false) {
+        if (game.turnOver === false) {
             if (game.playerTurn) {
                 game.playerTurn = false
                 dealerAi()
@@ -25,7 +25,7 @@ const hitButton = function () {
     const hit = document.querySelector("#hit")
     hit.addEventListener("click", function () {
         //if it is playerOne's turn, get another card and remove card from deck
-        if (!game.gameOver) {
+        if (!game.turnOver) {
             if (game.playerTurn) {
                 hitCard(0)
                 //display the card
@@ -33,13 +33,13 @@ const hitButton = function () {
                 //check for blackjack
                 blackjack()
                 //if no blackjack, no game over, check for a loss
-                if (!game.gameOver) {
+                if (!game.turnOver) {
                     checkForLoss()
                 }
             }
         }
         //check for gameOver after click, if not, check for loss.
-        if (game.gameOver) {}
+        if (game.turnOver) {}
     })
 }
 
@@ -49,7 +49,7 @@ const retry = function () {
     retry.addEventListener("click", function () {
         //on click reset playerTurn and gameOver false
         game.playerTurn = true
-        game.gameOver = false
+        game.turnOver = false
         //reset totalValue and cards in Hand for players
         for (let i = 0; i < game.players.length; i++) {
             game.players[i].totalValue = 0
@@ -67,26 +67,8 @@ const retry = function () {
         }
         //make retry button disappear
         displayRetry()
+        enableBetButtons()
     })
-}
-
-const startGame = function () {
-    //create, shuffle the deck and deal two cards
-    createDeck()
-    //display score
-    display()
-    //event listener for hit button
-    hitButton()
-    //event listener for stand button
-    stand()
-    //event listener for retry button
-    retry()
-    //check for instant win after dealing cards
-    blackjack()
-    //instant adjust for ace, if two aces were drawn at start of the game
-    for (let i = 0; i < game.players.length; i++) {
-        adjustForAce(game.players[i])
-    }
 }
 
 //display retry button

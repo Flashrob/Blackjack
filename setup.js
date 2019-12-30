@@ -1,11 +1,19 @@
 // TODO
 // ADD OTHER PLAYERS
 // ADD BETTING
+    // - ask for bet before turn begins
+    // - bet buttons with certain amount
+    // - start turn after bet
+    // - turn over if someone wins/loses
+    // - give win or draw
+    // - repeat
+// ADD RULES LIGHTBOX
 // ADD EXTRA FEATURES
 // MAKE LAYOUT RESPONSIVE
 
 let deck = []
 const message = document.querySelector(".message")
+const balance = document.querySelector("#balance")
 
 const createDeck = function () {
     const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
@@ -34,7 +42,7 @@ const createDeck = function () {
 
             //push card object to deck
             deck.push(card)
-            game.gameOver = false
+            game.turnOver = false
         }
     }
     //shuffle 1000 times
@@ -123,6 +131,27 @@ const display = function () {
     pHouse.textContent = `${game.players[game.players.length-1].totalValue}`
     //append house p to text div
     textHouse.appendChild(pHouse)
+    //display the current balance
+    balance.innerHTML = `Your Balance: ${game.players[0].balance}`
     //display the cards
     displayCards()
+}
+
+const startGame = function () {
+    //create, shuffle the deck and deal two cards
+    createDeck()
+    //display score
+    display()
+    //event listener for hit button
+    hitButton()
+    //event listener for stand button
+    stand()
+    //event listener for retry button
+    retry()
+    //check for instant win after dealing cards
+    blackjack()
+    //instant adjust for ace, if two aces were drawn at start of the game
+    for (let i = 0; i < game.players.length; i++) {
+        adjustForAce(game.players[i])
+    }
 }

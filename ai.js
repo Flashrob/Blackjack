@@ -1,5 +1,5 @@
 const dealerAi = function () {
-    if (!game.gameOver) {
+    if (!game.turnOver) {
         const house = game.players.length - 1
         //house at least 17, determine winner
         if (game.players[house].totalValue >= 17) {
@@ -12,7 +12,7 @@ const dealerAi = function () {
             //check for blackjack
             blackjack()
             //if not blackjack, no game over, check for loss
-            if (!game.gameOver) {
+            if (!game.turnOver) {
                 checkForLoss()
             }
         }

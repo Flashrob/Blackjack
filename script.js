@@ -5,7 +5,8 @@ const game = {
             name: "playerOne",
             cards: [],
             totalValue: 0,
-            cash: 0
+            balance: 100,
+            currentBet: 0
         }, {
             name: "House",
             cards: [],
@@ -20,7 +21,10 @@ const game = {
         // }
     ],
     playerTurn: true,
+    betMade: false,
+    turnOver: false,
     gameOver: false,
+    gameStart: false
 }
 
-startGame() 
+betEvent()
