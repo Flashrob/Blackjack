@@ -24,7 +24,9 @@ const game = {
     betMade: false,
     turnOver: false,
     gameOver: false,
+    gameOverText: "",
     gameStart: false
 }
 
+//previously start game. With betting structure, start game only once a bet was made.
 betEvent()

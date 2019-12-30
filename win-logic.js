@@ -24,20 +24,24 @@ const checkForLoss = function () {
         if (adjustForAce(game.players[0])) {
             return true
         } else {
-            displayRetry()
+            displayNewHand()
             game.turnOver = true
             message.textContent = "You lost!"
+            //reset bet amount
             game.players[0].currentBet = 0
+            gameOver()
             return true
         }
     } else if (game.players[game.players.length - 1].totalValue > 21) {
         if (adjustForAce(game.players[game.players.length - 1])) {
             return true
         } else {
-            displayRetry()
+            displayNewHand()
             game.turnOver = true
             message.textContent = "House lost!"
+            //winning!
             profit()
+            //reset bet amount!
             game.players[0].currentBet = 0
             return true
         }
@@ -47,25 +51,31 @@ const checkForLoss = function () {
 const determineWinner = function () {
     //if player has higher value than dealer, player wins, game over
     if (game.players[0].totalValue > game.players[game.players.length - 1].totalValue) {
-        displayRetry()
+        displayNewHand()
         game.turnOver = true
+        //winning!
         profit()
+        //reset bet amount
         game.players[0].currentBet = 0
         message.textContent = "You won!"
         return true
         //if player has lower value than dealer, dealer wins, game over
     } else if (game.players[0].totalValue < game.players[game.players.length - 1].totalValue) {
-        displayRetry()
+        displayNewHand()
         game.turnOver = true
+        //reset bet amount
         game.players[0].currentBet = 0
         message.textContent = "House won!"
+        gameOver()
         return true
         //if player and dealer have the same value, push(draw) and return the bets.
     } else if (game.players[0].totalValue === game.players[game.players.length - 1].totalValue) {
-        displayRetry()
+        displayNewHand()
         game.turnOver = true
+        //give back the bet and reset bet amount
         game.players[0].balance = game.players[0].balance + game.players[0].currentBet
         game.players[0].currentBet = 0
+
         message.textContent = "Push! Draw!"
         return true
     }
@@ -75,17 +85,24 @@ const determineWinner = function () {
 const blackjack = function () {
     for (let i = 0; i < game.players.length; i++) {
         if (game.players[i].totalValue === 21) {
+            //if player has blackjack, give winning
             if (game.players[0].totalValue === 21){
+                //calculate winnings
                 profit()
             }
-            displayRetry()
+            displayNewHand()
             game.turnOver = true
+            //reset bet
             game.players[0].currentBet = 0
-            return message.textContent = `BLACKJACK`
+            gameOver()
+            message.textContent = `BLACKJACK`
+            return true
         }
     }
 }
 
 const profit = function (){
+    //winnings are bet * 1.5
     game.players[0].balance = game.players[0].balance + (game.players[0].currentBet * 1.5)
 }
+

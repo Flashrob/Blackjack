@@ -1,11 +1,6 @@
 // TODO
 // ADD OTHER PLAYERS
 // ADD BETTING
-    // - ask for bet before turn begins
-    // - bet buttons with certain amount
-    // - start turn after bet
-    // - turn over if someone wins/loses
-    // - give win or draw
     // - repeat
 // ADD RULES LIGHTBOX
 // ADD EXTRA FEATURES
@@ -147,7 +142,7 @@ const startGame = function () {
     //event listener for stand button
     stand()
     //event listener for retry button
-    retry()
+    dealNewHand()
     //check for instant win after dealing cards
     blackjack()
     //instant adjust for ace, if two aces were drawn at start of the game

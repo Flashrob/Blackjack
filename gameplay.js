@@ -44,9 +44,12 @@ const hitButton = function () {
 }
 
 //retry button function
-const retry = function () {
+const dealNewHand = function () {
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function () {
+
+        enableBetButtons()
+        disableActionButtons()
         //on click reset playerTurn and gameOver false
         game.playerTurn = true
         game.turnOver = false
@@ -61,18 +64,72 @@ const retry = function () {
         display()
         //check for instant win after dealing cards
         blackjack()
+        if (blackjack()) {
+            document.querySelector(".message").classList.add("d-none")
+        }
         //instant adjust for ace, if two aces were drawn after retry
         for (let i = 0; i < game.players.length; i++) {
             adjustForAce(game.players[i])
         }
         //make retry button disappear
-        displayRetry()
-        enableBetButtons()
+        displayNewHand()
+        deactivateCardDisplay()
     })
 }
 
 //display retry button
-const displayRetry = function () {
+const displayNewHand = function () {
     const retry = document.querySelector("#retry")
     retry.classList.toggle("d-none")
+}
+
+const activateCardDisplay = function () {
+    const allImages = document.querySelectorAll("img")
+    allImages.forEach(function (item) {
+        item.classList.remove("d-none")
+    })
+    const text = document.querySelector(".text p")
+    text.textContent = `${game.players[0].totalValue}`
+    const houseText = document.querySelector(".house-text p")
+    houseText.textContent = `${game.players[game.players.length - 1].totalValue}`
+}
+
+const deactivateCardDisplay = function () {
+    const allImages = document.querySelectorAll("img")
+    allImages.forEach(function (item) {
+        item.classList.add("d-none")
+    })
+    const text = document.querySelector(".text p")
+    text.textContent = ""
+    const houseText = document.querySelector(".house-text p")
+    houseText.textContent = ""
+}
+
+const gameOver = function () {
+    if (game.players[0].balance === 0) {
+        document.querySelector("#retry").classList.add("d-none")
+        setTimeout(function () {
+            //hide game board
+            document.querySelector(".game-board").classList.toggle("d-none")
+            //create div for restart button and game over header
+            const restartDiv = document.createElement("div")
+            restartDiv.id = "game-restart"
+            //create game over header
+            const lostText = document.createElement("h1")
+            lostText.textContent = "GAME OVER!"
+            //create restart button
+            const restartButton = document.createElement("button")
+            restartButton.textContent = "RESTART GAME!"
+            restartButton.addEventListener("click", function () {
+                location.reload()
+            })
+            //append button and header to div, append div to body
+            restartDiv.appendChild(lostText)
+            restartDiv.appendChild(restartButton)
+            document.body.appendChild(restartDiv)
+            //hide the notification panel
+            document.querySelector(".notification").classList.toggle("d-none")
+        }, 1500)
+
+    }
 }
