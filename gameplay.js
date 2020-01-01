@@ -13,8 +13,9 @@ const stand = function () {
     stand.addEventListener("click", function () {
         //on click, if not game over, set player turn to false, start dealer AI
         if (game.turnOver === false) {
-            if (game.playerTurn) {
-                game.playerTurn = false
+            if (game.playerTurn === 0) {
+                game.playerTurn++
+                playerAi()
                 dealerAi()
             }
         }
@@ -26,7 +27,7 @@ const hitButton = function () {
     hit.addEventListener("click", function () {
         //if it is playerOne's turn, get another card and remove card from deck
         if (!game.turnOver) {
-            if (game.playerTurn) {
+            if (game.playerTurn === 0) {
                 hitCard(0)
                 //display the card
                 display()
@@ -38,8 +39,6 @@ const hitButton = function () {
                 }
             }
         }
-        //check for gameOver after click, if not, check for loss.
-        if (game.turnOver) {}
     })
 }
 
@@ -47,10 +46,9 @@ const hitButton = function () {
 const dealNewHand = function () {
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function () {
-
         
         //on click reset playerTurn and gameOver false
-        game.playerTurn = true
+        game.playerTurn = 0
         game.turnOver = false
         //reset totalValue and cards in Hand for players
         for (let i = 0; i < game.players.length; i++) {
@@ -63,7 +61,6 @@ const dealNewHand = function () {
         display()
         //check for instant win after dealing cards
         blackjack()
-        
         //instant adjust for ace, if two aces were drawn after retry
         for (let i = 0; i < game.players.length; i++) {
             adjustForAce(game.players[i])

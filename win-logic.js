@@ -81,12 +81,52 @@ const determineWinner = function () {
     }
 }
 
+const determineAiWinner = function () {
+    const house = game.players.length - 1
+
+    for (let i = 1; i < game.players.length - 1; i++) {
+            //if AI has Blackjack
+        if (game.players[i].totalValue === 21) {
+
+            // AiProfit()
+            return true
+            // if AI is over 21, loses bet
+        } else if (game.players[i].totalValue > 21) {
+            game.players[i].currentBet = 0
+            return true
+
+            //if AI has higher value than dealer and below 22, AI wins
+        } else if (game.players[i].totalValue > game.players[house].totalValue && game.players[i].totalValue < 22) {
+
+            console.log("PC WON!")
+            //winning!
+            // AiProfit()
+            //reset bet amount
+            game.players[i].currentBet = 0
+            return true
+
+            //if AI has lower value than dealer, and dealer below 22, AI loses
+        } else if (game.players[i].totalValue < game.players[house].totalValue && game.players[house].totalValue < 22) {
+            //reset bet amount
+            game.players[i].currentBet = 0
+            return true
+
+            //if AI and dealer have the same value, push(draw) and return the bets.
+        } else if (game.players[i].totalValue === game.players[house].totalValue) {
+            //give back the bet and reset bet amount
+            game.players[i].balance = game.players[i].balance + game.players[i].currentBet
+            game.players[i].currentBet = 0
+            return true
+        }
+    }
+}
+
 //check each player, if their card value is 21 for instant win
 const blackjack = function () {
     for (let i = 0; i < game.players.length; i++) {
         if (game.players[0].totalValue === 21 || game.players[game.players.length - 1].totalValue === 21) {
             //if player has blackjack, give winning
-            if (game.players[0].totalValue === 21){
+            if (game.players[0].totalValue === 21) {
                 //calculate winnings
                 profit()
             }
@@ -101,8 +141,7 @@ const blackjack = function () {
     }
 }
 
-const profit = function (){
+const profit = function () {
     //winnings are bet * 1.5
     game.players[0].balance = game.players[0].balance + (game.players[0].currentBet * 1.5)
 }
-

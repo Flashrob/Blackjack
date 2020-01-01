@@ -1,5 +1,8 @@
 // TODO
 // ADD OTHER PLAYERS
+    // - work on the DetermineAiWinner function
+    // - Create AiProfit() Function for use in DetermineAiWinner function
+    // - implement automatic betting logic for player Ai
 // ADD RULES LIGHTBOX
 // ADD EXTRA FEATURES
 // MAKE LAYOUT RESPONSIVE

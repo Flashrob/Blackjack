@@ -19,7 +19,7 @@ const betEvent = function () {
 
     //event listener for $10 Button
     ten.addEventListener("click", function () {
-        if (!game.betMade) {
+        if (!game.players[0].betMade) {
             //display possible instant blackjack message
             document.querySelector(".message").classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
@@ -44,7 +44,7 @@ const betEvent = function () {
 
     //event listener for $25 Button
     twentyFive.addEventListener("click", function () {
-        if (!game.betMade) {
+        if (!game.players[0].betMade) {
             //display possible instant blackjack message
             document.querySelector(".message").classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
@@ -69,7 +69,7 @@ const betEvent = function () {
 
     //event listener for $50 Button
     fifty.addEventListener("click", function () {
-        if (!game.betMade) {
+        if (!game.players[0].betMade) {
             //display possible instant blackjack message
             document.querySelector(".message").classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
@@ -94,7 +94,7 @@ const betEvent = function () {
 
     //event listener for All-in Button
     all.addEventListener("click", function () {
-        if (!game.betMade) {
+        if (!game.players[0].betMade) {
             //display possible instant blackjack message
             document.querySelector(".message").classList.remove("d-none")
             //all in, bet amount is full balance and balance is set to 0
@@ -138,7 +138,7 @@ const enableActionButtons = function () {
 const disableBetButtons = function () {
     allBets.forEach(function (item) {
         item.disabled = true
-        game.betMade = true
+        game.players[0].betMade = true
     })
 }
 
@@ -146,6 +146,6 @@ const disableBetButtons = function () {
 const enableBetButtons = function () {
     allBets.forEach(function (item) {
         item.disabled = false
-        game.betMade = false
+        game.players[0].betMade = false
     })
 }

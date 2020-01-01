@@ -6,25 +6,32 @@ const game = {
             cards: [],
             totalValue: 0,
             balance: 100,
-            currentBet: 0
+            currentBet: 0,
+            betMade: false
         }, 
         {
             name: "playerTwo",
             cards: [],
             totalValue: 0,
-            cash: 0
+            balance: 200,
+            currentBet: 0,
+            betMade: false
         },
         {
             name: "playerThree",
             cards: [],
             totalValue: 0,
-            cash: 0
+            cash: 0,
+            currentBet: 0,
+            betMade: false
         },
         {
             name: "playerFour",
             cards: [],
             totalValue: 0,
-            cash: 0
+            cash: 0,
+            currentBet: 0,
+            betMade: false
         },
          {
             name: "House",
@@ -33,8 +40,7 @@ const game = {
             losses: 0
         },
     ],
-    playerTurn: true,
-    betMade: false,
+    playerTurn: 0,
     turnOver: false,
     gameOver: false,
     gameOverText: "",

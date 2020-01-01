@@ -111,6 +111,7 @@ img {
 
 .card-container .one, .card-container .two, .card-container .three {
     margin-top: 37px;
+    opacity: 0.5;
 }
 
 .first-player .cards {
