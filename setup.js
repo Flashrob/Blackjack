@@ -91,7 +91,7 @@ const displayCards = function () {
         for (let j = 0; j < game.players[i].cards.length; j++) {
             const img = document.createElement("img")
             img.setAttribute("src", `${game.players[i].cards[j].image}`)
-            img.className = `card-image-${j}`
+            img.className = `card-image-${i}${j}`
             cards[i].appendChild(img)
         }
     }
@@ -100,9 +100,12 @@ const displayCards = function () {
 
 //display the score
 const display = function () {
-    //select text div and reset content for player
-    const text = document.querySelector(".text")
-    text.innerHTML = ""
+    //select text divs and reset content for all player
+    const text = document.querySelectorAll(".text")
+    text.forEach(function(item){
+        item.innerHTML = ""
+    })
+
     message.textContent = ""
 
     //loop through all players
@@ -111,8 +114,8 @@ const display = function () {
         const p = document.createElement("p")
         //set content to player cards value
         p.textContent = `${game.players[i].totalValue}`
-        //append paragraph to text div
-        text.appendChild(p)
+        //append paragraph to player's text div
+        text[i].appendChild(p)
     }
 
     //select text div and reset content for house

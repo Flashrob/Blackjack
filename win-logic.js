@@ -84,7 +84,7 @@ const determineWinner = function () {
 //check each player, if their card value is 21 for instant win
 const blackjack = function () {
     for (let i = 0; i < game.players.length; i++) {
-        if (game.players[i].totalValue === 21) {
+        if (game.players[0].totalValue === 21 || game.players[game.players.length - 1].totalValue === 21) {
             //if player has blackjack, give winning
             if (game.players[0].totalValue === 21){
                 //calculate winnings

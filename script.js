@@ -7,18 +7,31 @@ const game = {
             totalValue: 0,
             balance: 100,
             currentBet: 0
-        }, {
+        }, 
+        {
+            name: "playerTwo",
+            cards: [],
+            totalValue: 0,
+            cash: 0
+        },
+        {
+            name: "playerThree",
+            cards: [],
+            totalValue: 0,
+            cash: 0
+        },
+        {
+            name: "playerFour",
+            cards: [],
+            totalValue: 0,
+            cash: 0
+        },
+         {
             name: "House",
             cards: [],
             totalValue: 0,
             losses: 0
         },
-        // {
-        //     name: "playerTwo",
-        //     cards: [],
-        //     totalValue: 0,
-        //     cash: 0
-        // }
     ],
     playerTurn: true,
     betMade: false,
