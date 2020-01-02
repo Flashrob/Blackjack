@@ -11,7 +11,11 @@ const adjustForAce = function (player) {
                 player.totalValue = player.totalValue + player.cards[j].weight
             }
             display()
-            // message.textContent = "Ace adjusted"
+
+            //display message for player, if ace adjusted value
+            if (player === game.players[0]){
+                message.textContent = "Ace adjusted"
+            }
             return true
         }
     }
@@ -26,12 +30,14 @@ const checkForLoss = function () {
             return true
         } else {
 
+            game.turnOver = true
             //make Ai draw even after players loss
+            game.players[0].loss = true
             game.playerTurn++
             playerAi()
+            dealerAi()
 
             displayNewHand()
-            game.turnOver = true
             message.textContent = "You lost!"
             //reset bet amount
             game.players[0].currentBet = 0
@@ -147,22 +153,30 @@ const blackjack = function () {
 
     if (game.players[0].totalValue === 21 || game.players[house].totalValue === 21) {
         //instant win, increase player turn
-        game.playerTurn++
         //if player has blackjack, give winning
         if (game.players[0].totalValue === 21) {
             //calculate winnings
             profit()
-            //if player, not house, has instant win, make AI draw cards and determine the winner
+            //if player, not house, has instant win
+            game.players[0].loss = true
+            game.playerTurn++
             playerAi()
-        }
-        //when there is a blackjack, display new Hand button
-        displayNewHand()
-        game.turnOver = true
+            dealerAi()
+
         //reset bet
         game.players[0].currentBet = 0
         gameOver()
         message.textContent = `BLACKJACK`
         return true
+        }
+
+        displayNewHand()
+        game.turnOver = true
+        //reset bet
+        game.players[0].currentBet = 0
+        message.textContent = `HOUSE BJ`
+        return true
+        
     }
 
 }

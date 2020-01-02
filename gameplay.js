@@ -31,12 +31,12 @@ const hitButton = function () {
                 hitCard(0)
                 //display the card
                 display()
-                //check for blackjack
-                blackjack()
-                //if no blackjack, no game over, check for a loss
+                //check for a loss or adjusted ace
                 if (!game.turnOver) {
                     checkForLoss()
                 }
+                //check for blackjack
+                blackjack()
             }
         }
     })

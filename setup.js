@@ -1,8 +1,6 @@
 // TODO
 // ADD OTHER PLAYERS
-    // - work on the DetermineAiWinner function
-    // - Create AiProfit() Function for use in DetermineAiWinner function
-    // - implement automatic betting logic for player Ai
+// - after player made move, AI makes move, then house makes move
 // ADD RULES LIGHTBOX
 // ADD EXTRA FEATURES
 // MAKE LAYOUT RESPONSIVE
@@ -105,7 +103,7 @@ const displayCards = function () {
 const display = function () {
     //select text divs and reset content for all player
     const text = document.querySelectorAll(".text")
-    text.forEach(function(item){
+    text.forEach(function (item) {
         item.innerHTML = ""
     })
 
@@ -147,10 +145,11 @@ const startGame = function () {
     stand()
     //event listener for retry button
     dealNewHand()
-    //check for instant win after dealing cards
-    blackjack()
     //instant adjust for ace, if two aces were drawn at start of the game
     for (let i = 0; i < game.players.length; i++) {
         adjustForAce(game.players[i])
     }
+    //check for instant win after dealing cards
+    blackjack()
+
 }
