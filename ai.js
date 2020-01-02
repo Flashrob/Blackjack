@@ -9,7 +9,7 @@ const playerAi = function (){
                 game.players[1].balance = game.players[1].balance - game.players[1].currentBet
             }
             //hit a card if value is 15 or below OR if house has a higher value
-            if (game.players[1].totalValue <= 15 || game.players[1].totalValue < game.players[house].totalValue){
+            if (game.players[1].totalValue <= 19 || game.players[1].totalValue < game.players[house].totalValue){
                 hitCard(1)
                 display()
                 playerAi()
@@ -19,27 +19,41 @@ const playerAi = function (){
             }
         }
         // //computer player 2
-        // if (game.playerTurn === 2){
-        //     if (game.players[2].totalValue < 17){
-        //         hitCard(2)
-        //         display()
-        //     } else {
-        //         game.playerTurn++
-        //         playerAi()
-        //         determineAiWinner()
-        //     }
-        // }
+        if (game.playerTurn === 2){
+            //player 2 makes a bet
+            if (!game.players[2].betMade){
+                game.players[2].betMade = true
+                game.players[2].currentBet = 10
+                game.players[2].balance = game.players[2].balance - game.players[2].currentBet
+            }
+            //hit a card if value is 15 or below OR if house has a higher value
+            if (game.players[2].totalValue <= 16 || game.players[2].totalValue < game.players[house].totalValue){
+                hitCard(2)
+                display()
+                playerAi()
+            } else {
+                game.playerTurn++
+                playerAi()
+            }
+        }
         // //computer player 3
-        // if (game.playerTurn === 3){
-        //     if (game.players[1].totalValue <= 14){
-        //         hitCard(3)
-        //         display()
-        //     } else {
-        //         game.playerTurn = false
-        //         playerAi()
-        //         determineAiWinner()
-        //     }
-        // }
+        if (game.playerTurn === 3){
+            //player 3 makes a bet
+            if (!game.players[3].betMade){
+                game.players[3].betMade = true
+                game.players[3].currentBet = 10
+                game.players[3].balance = game.players[3].balance - game.players[3].currentBet
+            }
+            //hit a card if value is 15 or below OR if house has a higher value
+            if (game.players[3].totalValue <= 14 || game.players[3].totalValue < game.players[house].totalValue){
+                hitCard(3)
+                display()
+                playerAi()
+            } else {
+                game.playerTurn++
+                playerAi()
+            }
+        }
 }
 
 const dealerAi = function () {

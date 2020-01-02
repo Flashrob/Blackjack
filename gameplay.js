@@ -48,6 +48,7 @@ const dealNewHand = function () {
     retry.addEventListener("click", function () {
         
         //on click reset playerTurn and gameOver false
+        game.players[0].loss = false
         game.playerTurn = 0
         game.turnOver = false
         //reset totalValue and cards in Hand for players

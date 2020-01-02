@@ -7,7 +7,8 @@ const game = {
             totalValue: 0,
             balance: 100,
             currentBet: 0,
-            betMade: false
+            betMade: false,
+            loss: false
         }, 
         {
             name: "playerTwo",
@@ -15,7 +16,8 @@ const game = {
             totalValue: 0,
             balance: 200,
             currentBet: 0,
-            betMade: false
+            betMade: false,
+            win: false
         },
         {
             name: "playerThree",
@@ -23,7 +25,8 @@ const game = {
             totalValue: 0,
             cash: 0,
             currentBet: 0,
-            betMade: false
+            betMade: false,
+            win: false
         },
         {
             name: "playerFour",
@@ -31,7 +34,8 @@ const game = {
             totalValue: 0,
             cash: 0,
             currentBet: 0,
-            betMade: false
+            betMade: false,
+            win: false
         },
          {
             name: "House",
