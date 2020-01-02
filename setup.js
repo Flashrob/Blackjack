@@ -8,6 +8,7 @@
 let deck = []
 const message = document.querySelector(".message")
 const balance = document.querySelector("#balance")
+const aiBalance = document.querySelectorAll(".ai-balance")
 
 const createDeck = function () {
     const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
@@ -130,6 +131,16 @@ const display = function () {
     textHouse.appendChild(pHouse)
     //display the current balance
     balance.innerHTML = `Your Balance: ${game.players[0].balance}`
+    //display balance for ai
+        //push balance into an array
+    const balanceArray = []
+    for (let i = 1; i < game.players.length-1;i++){
+            balanceArray.push(`Balance: ${game.players[i].balance}`)
+    }
+        //render each balance into their respective h3
+    for (let j = 0; j < balanceArray.length; j++){
+        aiBalance[j].innerHTML = balanceArray[j]
+    }
     //display the cards
     displayCards()
 }

@@ -147,6 +147,7 @@ const blackjack = function () {
     //intant blackjack test for Ai
     for (let i = 1; i < game.players.length-1; i++){
         if (game.players[i].totalValue === 21 && game.players[house].totalValue !== 21){
+            game.players[i].win = true
             AiProfit()
         }
     }
@@ -168,9 +169,17 @@ const blackjack = function () {
         gameOver()
         message.textContent = `BLACKJACK`
         return true
+        } else {
+            game.players[0].loss = true
+            game.playerTurn++
+            playerAi()
+            dealerAi()
         }
+        
+        //display new hand button
+        const retry = document.querySelector("#retry")
+        retry.classList.remove("d-none")
 
-        displayNewHand()
         game.turnOver = true
         //reset bet
         game.players[0].currentBet = 0

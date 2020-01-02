@@ -23,7 +23,7 @@ const game = {
             name: "playerThree",
             cards: [],
             totalValue: 0,
-            cash: 0,
+            balance: 150,
             currentBet: 0,
             betMade: false,
             win: false
@@ -32,7 +32,7 @@ const game = {
             name: "playerFour",
             cards: [],
             totalValue: 0,
-            cash: 0,
+            balance: 110,
             currentBet: 0,
             betMade: false,
             win: false
