@@ -33,14 +33,14 @@ const hitButton = function () {
                 display()
                 //check for blackjack
                 blackjack()
-                if (blackjack()){
+                if (blackjack()) {
                     displayNewHand()
                 }
                 //check for a loss or adjusted ace
                 if (!game.turnOver) {
                     checkForLoss()
                 }
-                
+
             }
         }
     })
@@ -50,7 +50,7 @@ const hitButton = function () {
 const dealNewHand = function () {
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function () {
-        
+
         //on click reset playerTurn and gameOver false
         game.players[0].loss = false
         game.playerTurn = 0
@@ -64,10 +64,10 @@ const dealNewHand = function () {
         createDeck()
         //display score
         display()
-               //instant adjust for ace, if two aces were drawn after retry
-               for (let i = 0; i < game.players.length; i++) {
-                adjustForAce(game.players[i])
-                }
+        //instant adjust for ace, if two aces were drawn after retry
+        for (let i = 0; i < game.players.length; i++) {
+            adjustForAce(game.players[i])
+        }
         //check for instant win after dealing cards
         blackjack()
 
@@ -77,44 +77,13 @@ const dealNewHand = function () {
 
         //make retry button disappear
         hideNewHand()
+        hideNewValue()
         deactivateCardDisplay()
         balance.innerHTML = `Place bet! Your Balance: ${game.players[0].balance}`
     })
 }
 
-//display retry button
-const displayNewHand = function () {
-    const retry = document.querySelector("#retry")
-    retry.classList.remove("d-none")
-}
-
-const hideNewHand = function() {
-    const retry = document.querySelector("#retry")
-    retry.classList.add("d-none")
-}
-
-const activateCardDisplay = function () {
-    const allImages = document.querySelectorAll("img")
-    allImages.forEach(function (item) {
-        item.classList.remove("d-none")
-    })
-    const text = document.querySelector(".text p")
-    text.textContent = `${game.players[0].totalValue}`
-    const houseText = document.querySelector(".house-text p")
-    houseText.textContent = `${game.players[game.players.length - 1].totalValue}`
-}
-
-const deactivateCardDisplay = function () {
-    const allImages = document.querySelectorAll("img")
-    allImages.forEach(function (item) {
-        item.classList.add("d-none")
-    })
-    const text = document.querySelector(".text p")
-    text.textContent = ""
-    const houseText = document.querySelector(".house-text p")
-    houseText.textContent = ""
-}
-
+//game over once players balance is 0
 const gameOver = function () {
     if (game.players[0].balance === 0) {
         document.querySelector("#retry").classList.add("d-none")
@@ -140,6 +109,5 @@ const gameOver = function () {
             //hide the notification panel
             document.querySelector(".notification").classList.toggle("d-none")
         }, 1500)
-
     }
 }
