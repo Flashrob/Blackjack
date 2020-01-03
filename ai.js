@@ -23,7 +23,7 @@ const playerAi = function (){
             //player 2 makes a bet
             if (!game.players[2].betMade){
                 game.players[2].betMade = true
-                game.players[2].currentBet = 10
+                game.players[2].currentBet = 25
                 game.players[2].balance = game.players[2].balance - game.players[2].currentBet
             }
             //hit a card if value is 15 or below OR if house has a higher value
@@ -41,7 +41,7 @@ const playerAi = function (){
             //player 3 makes a bet
             if (!game.players[3].betMade){
                 game.players[3].betMade = true
-                game.players[3].currentBet = 10
+                game.players[3].currentBet = 50
                 game.players[3].balance = game.players[3].balance - game.players[3].currentBet
             }
             //hit a card if value is 15 or below OR if house has a higher value
