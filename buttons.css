@@ -1,0 +1,82 @@
+/* All styling for buttons */
+
+.buttons {
+    padding-left: 5%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    color: white !important;
+}
+
+.btn-outline-danger {
+    border-color: rgb(112, 20, 20) !important;
+}
+
+.btn-outline-danger:hover {
+    background-color: rgb(112, 20, 20) !important;
+}
+
+.btn-warning {
+    background-color: rgba(214, 195, 17, 0.6)!important;
+    border: none!important;
+}
+
+.btn-warning:hover {
+    background-color: rgba(214, 195, 17)!important;
+}
+
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    background-image: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.bet-buttons {
+    width: 100px;
+    height: 200px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.bet-buttons button {
+    display: block;
+}
+
+#ten {
+    position: absolute;
+    top: 15%;
+}
+
+#twentyfive {
+    position: absolute;
+    top: 39%;
+}
+
+#fifty {
+    position: absolute;
+    top: 63%;
+}
+
+#all-in {
+    position: absolute;
+    top: 90%;
+}
+
+#game-restart {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    font-size: 50px;
+    text-align: center;
+}

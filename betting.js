@@ -1,5 +1,11 @@
 const betEvent = function () {
 
+    //display gameboard
+    document.querySelector(".game-board").classList.remove("d-none")
+
+    //display player name
+    document.querySelector("#player-name").textContent = game.players[0].name
+
     const controlButtonActivity = function(){
         //display possible Blackjack message
         message.classList.remove("d-none")

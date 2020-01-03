@@ -92,3 +92,45 @@ const startGame = function () {
         displayNewHand()
     }
 }
+
+//initial input form for player name!
+const nameInput = function () {
+    const form = document.querySelector("#name-input")
+
+    form.addEventListener("submit", function(e){
+        //prevent page reload
+        e.preventDefault()
+        //set player name to input field value
+        game.players[0].name = e.target.elements[0].value
+        //make form and rules button disappear
+        form.classList.add("d-none")
+        document.querySelector("#rules").classList.add("d-none")
+        //start the game
+        betEvent()
+        
+    })
+}
+
+const rulesLightbox = function () {
+    const rules = document.querySelector("#rules-button")
+
+    rules.addEventListener("click", function(){
+        //create blackish backdrop
+        const backdrop = document.createElement("div")
+        backdrop.style.height = "100%"
+        backdrop.style.width = "100%"
+        backdrop.style.backgroundColor = "black"
+        backdrop.style.opacity = "0.4"
+        //create lightbox div
+        const lightbox = document.createElement("div")
+        lightbox.id = "rules"
+        //create header
+        const ruleText = document.createElement("h1")
+        ruleText.textContent = "Rules"
+        //append rules to lightbox
+        lightbox.appendChild(ruleText)
+        //append lightbox and backdrop to body
+        document.body.appendChild(backdrop)
+        document.body.appendChild(lightbox)
+    })
+}

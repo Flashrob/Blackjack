@@ -1,0 +1,162 @@
+
+/*
+
+Positioning cards for the house and players
+
+*/
+
+.card-image-00 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
+.card-image-10 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
+.card-image-20 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
+.card-image-30 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
+.house-card-0 {
+    position: relative;
+    right: 15%;
+    z-index: 0;
+}
+
+.card-image-01 {
+    position: absolute;
+    left: 12%;
+    z-index: 1;
+}
+
+.card-image-11 {
+    position: absolute;
+    left: 36.2%;
+    z-index: 1;
+}
+
+.card-image-21 {
+    position: absolute;
+    left: 60.3%;
+    z-index: 1;
+}
+
+.card-image-31 {
+    position: absolute;
+    left: 84.3%;
+    z-index: 1;
+}
+
+.house-card-1 {
+    position: absolute;
+    left: 46.2%;
+    z-index: 1;
+}
+
+.card-image-02 {
+    position: absolute;
+    z-index: 2;
+    left: 14%;
+}
+
+.card-image-12 {
+    position: absolute;
+    z-index: 2;
+    left: 38.2%;
+}
+
+.card-image-22 {
+    position: absolute;
+    z-index: 2;
+    left: 62.3%;
+}
+
+.card-image-32 {
+    position: absolute;
+    z-index: 2;
+    left: 86.3%;
+}
+
+.house-card-2 {
+    position: absolute;
+    left: 48.1%;
+    z-index: 2;
+}
+
+.card-image-03 {
+    position: absolute;
+    z-index: 3;
+    left: 16%;
+}
+
+.card-image-13 {
+    position: absolute;
+    z-index: 3;
+    left: 40.2%;
+}
+
+.card-image-23 {
+    position: absolute;
+    z-index: 2;
+    left: 64.3%;
+}
+
+.card-image-33 {
+    position: absolute;
+    z-index: 2;
+    left: 88.3%;
+}
+
+.house-card-3 {
+    position: absolute;
+    left: 50.2%;
+    z-index: 3;
+}
+
+.card-image-04 {
+    position: absolute;
+    z-index: 4;
+    left: 18%;
+}
+
+.card-image-14 {
+    position: absolute;
+    z-index: 4;
+    left: 42.2%;
+}
+
+.card-image-24 {
+    position: absolute;
+    z-index: 2;
+    left: 66.3%;
+}
+
+.card-image-34 {
+    position: absolute;
+    z-index: 2;
+    left: 90.3%;
+}
+
+.house-card-4 {
+    position: absolute;
+    left: 52.1%;
+    z-index: 4;
+}
+
+/* 
+
+End of card positioning
+
+*/

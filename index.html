@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cards.css">
+  <link rel="stylesheet" href="buttons.css">
   <!-- Fontawesome script -->
   <script src="https://kit.fontawesome.com/b7520d9ef5.js"></script>
   <!-- Bootstrap CSS -->
@@ -21,7 +23,13 @@
     <button id="retry" class="btn btn-outline-danger d-none">Next Hand!</button>
     <h2 class="message"></h2>
   </div>
-  <div class="game-board">
+  
+  <form id="name-input" action="">
+    <input type="text" placeholder="Type name" required id="input"><button>Start!</button>
+  </form>
+  <button id="rules-button">Rules</button>
+
+  <div class="game-board d-none">
 
 
     <div id="top">
@@ -50,7 +58,7 @@
           </div>
           <div class="text"></div>
           <div class="cards"></div>
-          <h3>Player One</h3>
+          <h3 id="player-name">Player One</h3>
         </div>
         <div class="player one">
           <div class="text"></div>

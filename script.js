@@ -51,5 +51,6 @@ const game = {
     gameStart: false
 }
 
-//previously start game. With betting structure, start game only once a bet was made.
-betEvent()
+//rules button event. form input event to start the game.
+rulesLightbox()
+nameInput()
