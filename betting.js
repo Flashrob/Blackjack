@@ -2,7 +2,7 @@ const betEvent = function () {
 
     const controlButtonActivity = function(){
         //display possible Blackjack message
-        document.querySelector(".message").classList.remove("d-none")
+        message.classList.remove("d-none")
         //disable bet buttons after bet and enable action buttons
         disableBetButtons()
         enableActionButtons()
@@ -47,11 +47,12 @@ const betEvent = function () {
         }
     })
 
+
     //event listener for $25 Button
     twentyFive.addEventListener("click", function () {
         if (!game.players[0].betMade) {
             //display possible instant blackjack message
-            document.querySelector(".message").classList.remove("d-none")
+            message.classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((game.players[0].balance - 25) >= 0) {
                 game.players[0].currentBet = 25
@@ -76,7 +77,7 @@ const betEvent = function () {
     fifty.addEventListener("click", function () {
         if (!game.players[0].betMade) {
             //display possible instant blackjack message
-            document.querySelector(".message").classList.remove("d-none")
+            message.classList.remove("d-none")
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((game.players[0].balance - 50) >= 0) {
                 game.players[0].currentBet = 50
@@ -101,7 +102,7 @@ const betEvent = function () {
     all.addEventListener("click", function () {
         if (!game.players[0].betMade) {
             //display possible instant blackjack message
-            document.querySelector(".message").classList.remove("d-none")
+            message.classList.remove("d-none")
             
             //all in, bet amount is full balance and balance is set to 0
             game.players[0].currentBet = game.players[0].balance

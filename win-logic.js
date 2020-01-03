@@ -99,54 +99,50 @@ const determineAiWinner = function () {
 
     for (let i = 1; i < game.players.length - 1; i++) {
         game.players[i].betMade = false
-
-        //first check if AI is holding a hand of over 21 with an ace
-        if (adjustForAce(game.players[i])) {
-            return true
-
-        } else {
-
-            //if house over 21 and AI 21 and below
-            if (game.players[house].totalValue > 21 && game.players[i].totalValue <= 21) {
-                game.players[i].win = true
-                AiProfit()
+        if (!game.players[i].win) {
+            //first check if AI is holding a hand of over 21 with an ace
+            if (adjustForAce(game.players[i])) {
                 return true
+
+            } else {
+
+                //if house over 21 and AI 21 and below
+                if (game.players[house].totalValue > 21 && game.players[i].totalValue <= 21) {
+                    game.players[i].win = true
+                    AiProfit()
+                    return true
+
+                    //if AI is over 21
+                } else if (game.players[i].totalValue > 21) {
+                    game.players[i].currentBet = 0
+                    return true
+
+                    //if AI has higher value than dealer and below 22, AI wins
+                } else if (game.players[i].totalValue > game.players[house].totalValue && game.players[i].totalValue < 22) {
+                    //winning!
+                    game.players[i].win = true
+                    AiProfit()
+                    //reset bet amount
+                    game.players[i].currentBet = 0
+                    return true
+
+                    //if AI has lower value than dealer, and dealer below 22, AI loses
+                } else if (game.players[i].totalValue < game.players[house].totalValue && game.players[house].totalValue < 22) {
+                    //reset bet amount
+                    game.players[i].currentBet = 0
+                    return true
+
+                    //if AI and dealer have the same value, push(draw) and return the bets.
+                } else if (game.players[i].totalValue === game.players[house].totalValue) {
+                    //give back the bet and reset bet amount
+                    game.players[i].balance = game.players[i].balance + game.players[i].currentBet
+                    game.players[i].currentBet = 0
+                    return true
+                }
+
             }
-            //if AI has Blackjack
-            else if (game.players[i].totalValue === 21) {
-                game.players[i].win = true
-                AiProfit()
-                return true
-
-                // if AI is over 21, loses bet
-            } else if (game.players[i].totalValue > 21) {
-                game.players[i].currentBet = 0
-                return true
-
-                //if AI has higher value than dealer and below 22, AI wins
-            } else if (game.players[i].totalValue > game.players[house].totalValue && game.players[i].totalValue < 22) {
-                //winning!
-                game.players[i].win = true
-                AiProfit()
-                //reset bet amount
-                game.players[i].currentBet = 0
-                return true
-
-                //if AI has lower value than dealer, and dealer below 22, AI loses
-            } else if (game.players[i].totalValue < game.players[house].totalValue && game.players[house].totalValue < 22) {
-                //reset bet amount
-                game.players[i].currentBet = 0
-                return true
-
-                //if AI and dealer have the same value, push(draw) and return the bets.
-            } else if (game.players[i].totalValue === game.players[house].totalValue) {
-                //give back the bet and reset bet amount
-                game.players[i].balance = game.players[i].balance + game.players[i].currentBet
-                game.players[i].currentBet = 0
-                return true
-            }
-
         }
+
 
 
     }
@@ -164,7 +160,7 @@ const blackjack = function () {
                 AiProfit()
             }
         }
-        
+
     }
 
     if (game.players[0].totalValue === 21 || game.players[house].totalValue === 21) {

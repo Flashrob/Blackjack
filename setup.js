@@ -109,8 +109,10 @@ const display = function () {
     text.forEach(function (item) {
         item.innerHTML = ""
     })
+    if (game.playerTurn === 0){
+        message.textContent = ""
+    }
 
-    message.textContent = ""
 
     //loop through all players
     for (let i = 0; i < game.players.length - 1; i++) {
