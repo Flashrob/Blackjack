@@ -19,24 +19,24 @@ const game = {
             betMade: false,
             win: false
         },
-        {
-            name: "playerThree",
-            cards: [],
-            totalValue: 0,
-            balance: 150,
-            currentBet: 0,
-            betMade: false,
-            win: false
-        },
-        {
-            name: "playerFour",
-            cards: [],
-            totalValue: 0,
-            balance: 110,
-            currentBet: 0,
-            betMade: false,
-            win: false
-        },
+        // {
+        //     name: "playerThree",
+        //     cards: [],
+        //     totalValue: 0,
+        //     balance: 150,
+        //     currentBet: 0,
+        //     betMade: false,
+        //     win: false
+        // },
+        // {
+        //     name: "playerFour",
+        //     cards: [],
+        //     totalValue: 0,
+        //     balance: 110,
+        //     currentBet: 0,
+        //     betMade: false,
+        //     win: false
+        // },
          {
             name: "House",
             cards: [],

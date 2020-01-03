@@ -1,6 +1,8 @@
 // TODO
 // ADD OTHER PLAYERS
-// - after player made move, AI makes move, then house makes move
+// - Work on betting and displaying/adjusting balance for AI
+    // - Only calculate winning AFTER house has made its move
+    // - When lose, win, blackjack
 // ADD RULES LIGHTBOX
 // ADD EXTRA FEATURES
 // MAKE LAYOUT RESPONSIVE
@@ -162,5 +164,7 @@ const startGame = function () {
     }
     //check for instant win after dealing cards
     blackjack()
-
+    if (blackjack()){
+        displayNewHand()
+    }
 }

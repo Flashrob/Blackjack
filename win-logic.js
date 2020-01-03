@@ -13,7 +13,7 @@ const adjustForAce = function (player) {
             display()
 
             //display message for player, if ace adjusted value
-            if (player === game.players[0]){
+            if (player === game.players[0]) {
                 message.textContent = "Ace adjusted"
             }
             return true
@@ -53,7 +53,6 @@ const checkForLoss = function () {
             message.textContent = "House lost!"
             //winning!
             profit()
-            determineAiWinner()
             //reset bet amount!
             game.players[0].currentBet = 0
             return true
@@ -62,7 +61,7 @@ const checkForLoss = function () {
 }
 
 const determineWinner = function () {
-    const house = game.players.length-1
+    const house = game.players.length - 1
     //if player has higher value than dealer, player wins, game over
     if (game.players[0].totalValue > game.players[house].totalValue && game.players[0].totalValue < 22) {
         displayNewHand()
@@ -100,43 +99,55 @@ const determineAiWinner = function () {
 
     for (let i = 1; i < game.players.length - 1; i++) {
         game.players[i].betMade = false
-        if (game.players[house].totalValue > 21) {
-            game.players[i].win = true
-            AiProfit()
+
+        //first check if AI is holding a hand of over 21 with an ace
+        if (adjustForAce(game.players[i])) {
             return true
+
+        } else {
+
+            //if house over 21 and AI 21 and below
+            if (game.players[house].totalValue > 21 && game.players[i].totalValue <= 21) {
+                game.players[i].win = true
+                AiProfit()
+                return true
+            }
+            //if AI has Blackjack
+            else if (game.players[i].totalValue === 21) {
+                game.players[i].win = true
+                AiProfit()
+                return true
+
+                // if AI is over 21, loses bet
+            } else if (game.players[i].totalValue > 21) {
+                game.players[i].currentBet = 0
+                return true
+
+                //if AI has higher value than dealer and below 22, AI wins
+            } else if (game.players[i].totalValue > game.players[house].totalValue && game.players[i].totalValue < 22) {
+                //winning!
+                game.players[i].win = true
+                AiProfit()
+                //reset bet amount
+                game.players[i].currentBet = 0
+                return true
+
+                //if AI has lower value than dealer, and dealer below 22, AI loses
+            } else if (game.players[i].totalValue < game.players[house].totalValue && game.players[house].totalValue < 22) {
+                //reset bet amount
+                game.players[i].currentBet = 0
+                return true
+
+                //if AI and dealer have the same value, push(draw) and return the bets.
+            } else if (game.players[i].totalValue === game.players[house].totalValue) {
+                //give back the bet and reset bet amount
+                game.players[i].balance = game.players[i].balance + game.players[i].currentBet
+                game.players[i].currentBet = 0
+                return true
+            }
+
         }
-        //if AI has Blackjack
-        else if (game.players[i].totalValue === 21) {
-            game.players[i].win = true
-            AiProfit()
-            return true
-            // if AI is over 21, loses bet
-        } else if (game.players[i].totalValue > 21) {
-            game.players[i].currentBet = 0
-            return true
 
-            //if AI has higher value than dealer and below 22, AI wins
-        } else if (game.players[i].totalValue > game.players[house].totalValue && game.players[i].totalValue < 22) {
-            //winning!
-            game.players[i].win = true
-            AiProfit()
-            //reset bet amount
-            game.players[i].currentBet = 0
-            return true
-
-            //if AI has lower value than dealer, and dealer below 22, AI loses
-        } else if (game.players[i].totalValue < game.players[house].totalValue && game.players[house].totalValue < 22) {
-            //reset bet amount
-            game.players[i].currentBet = 0
-            return true
-
-            //if AI and dealer have the same value, push(draw) and return the bets.
-        } else if (game.players[i].totalValue === game.players[house].totalValue) {
-            //give back the bet and reset bet amount
-            game.players[i].balance = game.players[i].balance + game.players[i].currentBet
-            game.players[i].currentBet = 0
-            return true
-        }
 
     }
 }
@@ -145,11 +156,15 @@ const determineAiWinner = function () {
 const blackjack = function () {
     const house = game.players.length - 1
     //intant blackjack test for Ai
-    for (let i = 1; i < game.players.length-1; i++){
-        if (game.players[i].totalValue === 21 && game.players[house].totalValue !== 21){
-            game.players[i].win = true
-            AiProfit()
+    for (let i = 1; i < game.players.length - 1; i++) {
+        //if they didnt win
+        if (!game.players[i].win) {
+            if (game.players[i].totalValue === 21 && game.players[house].totalValue !== 21) {
+                game.players[i].win = true
+                AiProfit()
+            }
         }
+        
     }
 
     if (game.players[0].totalValue === 21 || game.players[house].totalValue === 21) {
@@ -158,36 +173,30 @@ const blackjack = function () {
         if (game.players[0].totalValue === 21) {
             //calculate winnings
             profit()
+            game.turnOver = true
             //if player, not house, has instant win
             game.players[0].loss = true
             game.playerTurn++
             playerAi()
             dealerAi()
 
-        //reset bet
-        game.players[0].currentBet = 0
-        gameOver()
-        message.textContent = `BLACKJACK`
-        return true
+            //reset bet
+            game.players[0].currentBet = 0
+            gameOver()
+            message.textContent = `BLACKJACK`
+            return true
         } else {
+            game.turnOver = true
             game.players[0].loss = true
             game.playerTurn++
             playerAi()
             dealerAi()
+            //reset bet
+            game.players[0].currentBet = 0
+            message.textContent = `HOUSE BJ`
+            return true
         }
-        
-        //display new hand button
-        const retry = document.querySelector("#retry")
-        retry.classList.remove("d-none")
-
-        game.turnOver = true
-        //reset bet
-        game.players[0].currentBet = 0
-        message.textContent = `HOUSE BJ`
-        return true
-        
     }
-
 }
 
 const profit = function () {
@@ -201,7 +210,7 @@ const AiProfit = function () {
         if (game.players[i].win) {
             game.players[i].balance = game.players[i].balance + (game.players[i].currentBet * 1.5)
             game.players[i].win = false
-            
+
         }
         game.players[i].betMade = false
     }

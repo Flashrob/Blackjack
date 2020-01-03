@@ -31,12 +31,16 @@ const hitButton = function () {
                 hitCard(0)
                 //display the card
                 display()
+                //check for blackjack
+                blackjack()
+                if (blackjack()){
+                    displayNewHand()
+                }
                 //check for a loss or adjusted ace
                 if (!game.turnOver) {
                     checkForLoss()
                 }
-                //check for blackjack
-                blackjack()
+                
             }
         }
     })
@@ -60,19 +64,19 @@ const dealNewHand = function () {
         createDeck()
         //display score
         display()
+               //instant adjust for ace, if two aces were drawn after retry
+               for (let i = 0; i < game.players.length; i++) {
+                adjustForAce(game.players[i])
+                }
         //check for instant win after dealing cards
         blackjack()
-        //instant adjust for ace, if two aces were drawn after retry
-        for (let i = 0; i < game.players.length; i++) {
-            adjustForAce(game.players[i])
-        }
 
         enableBetButtons()
         disableActionButtons()
         document.querySelector(".message").classList.add("d-none")
 
         //make retry button disappear
-        displayNewHand()
+        hideNewHand()
         deactivateCardDisplay()
         balance.innerHTML = `Place bet! Your Balance: ${game.players[0].balance}`
     })
@@ -81,7 +85,12 @@ const dealNewHand = function () {
 //display retry button
 const displayNewHand = function () {
     const retry = document.querySelector("#retry")
-    retry.classList.toggle("d-none")
+    retry.classList.remove("d-none")
+}
+
+const hideNewHand = function() {
+    const retry = document.querySelector("#retry")
+    retry.classList.add("d-none")
 }
 
 const activateCardDisplay = function () {

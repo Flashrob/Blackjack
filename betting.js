@@ -21,7 +21,12 @@ const betEvent = function () {
     ten.addEventListener("click", function () {
         if (!game.players[0].betMade) {
             //display possible instant blackjack message
-            document.querySelector(".message").classList.remove("d-none")
+            message.classList.remove("d-none")
+
+            if (blackjack()){
+                displayNewHand()
+            }
+
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((game.players[0].balance - 10) >= 0) {
                 game.players[0].currentBet = 10
@@ -97,6 +102,7 @@ const betEvent = function () {
         if (!game.players[0].betMade) {
             //display possible instant blackjack message
             document.querySelector(".message").classList.remove("d-none")
+            
             //all in, bet amount is full balance and balance is set to 0
             game.players[0].currentBet = game.players[0].balance
             game.players[0].balance = game.players[0].balance - game.players[0].currentBet
