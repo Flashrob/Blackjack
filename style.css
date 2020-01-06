@@ -9,30 +9,38 @@ html {
 }
 
 #name-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     position: absolute;
     top: 45%;
     left: 40%;
+    width: 300px;
 }
 
 #input {
     text-align: center;
-}
-
-#rules-button {
-    position: absolute;
-    top: 55%;
-    left: 47%;
+    font-size: 18px;
+    height: 38px;
 }
 
 #rules {
     text-align: center;
-    height: 300px;
-    width: 300px;
+    height: 500px;
+    width: 500px;
     background-color: white;
     position: absolute;
-    top: 20%;
-    left: 37%;
+    top: 6%;
+    left: 30%;
     z-index: 100;
+}
+
+ul {
+    list-style-type: disc;
+    width: 70%;
+    margin: 0 auto;
+    margin-left: 100px;
+    text-align: left;
 }
 
 .game-board {
