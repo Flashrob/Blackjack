@@ -21,6 +21,17 @@ const adjustForAce = function (player) {
     }
 }
 
+const endTurn = function (){
+    //turn over since over 21
+    game.turnOver = true
+    //player lost, makes Ai still draw afterwards
+    game.players[0].loss = true
+    //increase turn so AIs can play
+    game.playerTurn++
+    playerAi()
+    dealerAi()
+}
+
 //check each player, if their card value is 21 for instant win
 const blackjack = function () {
     const house = game.players.length - 1
@@ -39,28 +50,18 @@ const blackjack = function () {
 
         //if player has blackjack, give winnings
         if (game.players[0].totalValue === 21) {
-            //calculate winnings
+            //calculate winnings and end turn
             profit()
-            game.turnOver = true
-            //set loss to true, so dealerAI doesnt check for loss again
-            game.players[0].loss = true
-            game.playerTurn++
-            playerAi()
-            dealerAi()
-
+            endTurn()
             //reset bet
             game.players[0].currentBet = 0
-            gameOver()
             message.textContent = `BLACKJACK`
             return true
         } else {
-            game.turnOver = true
-            game.players[0].loss = true
-            game.playerTurn++
-            playerAi()
-            dealerAi()
+            endTurn()
             //reset bet
             game.players[0].currentBet = 0
+            //check for gameOver!
             gameOver()
             message.textContent = `HOUSE 21!`
             return true
@@ -76,19 +77,13 @@ const checkForLoss = function () {
         if (adjustForAce(game.players[0])) {
             return true
         } else {
-            //turn over since over 21
-            game.turnOver = true
-            //player lost, makes Ai still draw afterwards
-            game.players[0].loss = true
-            //increase turn so AIs can play
-            game.playerTurn++
-            playerAi()
-            dealerAi()
+            endTurn()
             //display next hand button, since player lost
             displayNewHand()
             message.textContent = "You lost!"
             //reset bet amount
             game.players[0].currentBet = 0
+            //check for game over!
             gameOver()
             return true
         }
