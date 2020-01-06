@@ -31,7 +31,7 @@ const displayCards = function () {
         for (let j = 0; j < game.players[i].cards.length; j++) {
             const img = document.createElement("img")
             img.setAttribute("src", `${game.players[i].cards[j].image}`)
-            img.className = `card-image-${i}${j}`
+            img.className = `card-image-${j}`
             cards[i].appendChild(img)
         }
     }

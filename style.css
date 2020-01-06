@@ -103,6 +103,7 @@ img {
 }
 /* house cards frame  */
 .casino .house-cards {
+    position: relative;
     border: 1px solid rgb(214, 195, 17);
     padding: 2px;
     width: 80%;
@@ -140,6 +141,7 @@ img {
 
 /* cards container for players  */
 .player .cards {
+    position: relative;
     border: 1px solid white;
     padding: 2px;
     width: 80%;
