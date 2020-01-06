@@ -1,3 +1,4 @@
+//create lightbox for rules display
 const rulesLightbox = function () {
     const rules = document.querySelector("#rules-button")
 
