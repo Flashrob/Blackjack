@@ -1,13 +1,14 @@
 const playerAi = function () {
 
     const aiBet = function (player, betAmount) {
+        //player bets of betAmount value
         game.players[player].betMade = true
         game.players[player].currentBet = betAmount
         game.players[player].balance = game.players[player].balance - game.players[player].currentBet
     }
 
     const aiDraw = function (player, drawLimit) {
-        //hit a card if value is 15 or below OR if house has a higher value
+        //hit a card if value is drawlimit or below OR if house has a higher value
         if (game.players[player].totalValue <= drawLimit || game.players[player].totalValue < game.players[house].totalValue) {
             hitCard(player)
             display()

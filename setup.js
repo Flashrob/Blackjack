@@ -94,6 +94,9 @@ const startGame = function () {
 const nameInput = function () {
     const form = document.querySelector("#name-input")
     form.addEventListener("submit", function(e){
+        var music = new Audio();
+        music.src = "bgsound.mp3";
+        music.play();
         //prevent page reload
         e.preventDefault()
         //set player name to input field value

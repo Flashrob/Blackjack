@@ -11,7 +11,7 @@ const game = {
             betMade: false,
             //check if turn is lost, for AI function
             loss: false
-        }, 
+        },
         {
             name: "playerTwo",
             cards: [],
@@ -39,7 +39,7 @@ const game = {
             betMade: false,
             win: false
         },
-         {
+        {
             name: "House",
             cards: [],
             totalValue: 0,
