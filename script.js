@@ -7,7 +7,9 @@ const game = {
             totalValue: 0,
             balance: 100,
             currentBet: 0,
+            //checks if bet was made
             betMade: false,
+            //check if turn is lost, for AI function
             loss: false
         }, 
         {
@@ -45,9 +47,12 @@ const game = {
         },
     ],
     playerTurn: 0,
+    //checks if turn is over
     turnOver: false,
+    //checks if game is over(balance 0)
     gameOver: false,
     gameOverText: "",
+    //checks if game has started when clicking on bet for the first time
     gameStart: false
 }
 

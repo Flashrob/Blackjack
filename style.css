@@ -8,6 +8,7 @@ html {
     box-shadow: inset 0 0 500px #000000;
 }
 
+/* Name Input form */
 #name-input {
     display: flex;
     align-items: center;
@@ -24,6 +25,7 @@ html {
     height: 38px;
 }
 
+/* Lightbox styling, rendered in JS */
 #rules {
     text-align: center;
     height: 500px;
@@ -34,7 +36,7 @@ html {
     left: 30%;
     z-index: 100;
 }
-
+/* Lightbox ul styling */
 ul {
     list-style-type: disc;
     width: 70%;
@@ -42,27 +44,27 @@ ul {
     margin-left: 100px;
     text-align: left;
 }
-
+/* game board dimensions */
 .game-board {
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: 0;
 }
-
+/* Player names */
 h3 {
     font-size: 20px!important;
 }
-
+/* Total value display */
 p {
     font-size: 25px;
     font-weight: 500;
 }
-
+/* Place bets and bets header  */
 h5 {
     color: white;
 }
-
+/* Yellow blackjack table writing */
 .header {
     position: absolute;
     z-index: 1;
@@ -79,63 +81,64 @@ img {
     width: 90px;
     margin: 5px;
 }
-
+/* Frame around cards  */
 .cards,
 .house-cards {
     display: flex;
     justify-content: center;
     margin: 0 auto;
 }
-
+/* top half of the game board  */
 #top {
     height: 48%;
     border-bottom: 5px solid rgba(214, 195, 17, 0.3);
     margin-bottom: 10px;
 }
-
+/* house container  */
 .house {
     width: 100%;
     display: flex;
     justify-content: center;
     padding-top: 5px;
 }
-
+/* house cards frame  */
 .casino .house-cards {
     border: 1px solid rgb(214, 195, 17);
     padding: 2px;
     width: 80%;
     height: 138.14px;
 }
-
+/* game state message box  */
 .notification {
     position: absolute;
     top: 10%;
     left: 10%;
     z-index: 100;
 }
-
+/* next hand button  */
 #retry {
     font-size: 30px;
 }
-
+/* game state message  */
 .message {
     color: white;
     margin-top: 10px;
     font-size: 4em;
 }
-
+/* player and AI div container  */
 .card-container {
     padding-left: 50px;
     display: flex;
     justify-content: space-around;
 }
-
+/* individual player and house div */
 .player, .casino {
     width: 200px;
     text-align: center;
     color: white;
 }
 
+/* cards container for players  */
 .player .cards {
     border: 1px solid white;
     padding: 2px;
@@ -144,19 +147,13 @@ img {
     height: 138.14px;
 }
 
+/* card container top margin since buttons missing */
 .card-container .one, .card-container .two, .card-container .three {
-    margin-top: 37px;
+    margin-top: 38px;
     opacity: 0.5;
 }
 
-.first-player .cards {
-    border: 1px solid white;
-    padding: 2px;
-    width: 80%;
-    margin-bottom: 2px;
-    height: 138.14px;
-}
-
+/* divs to contain total value text  */
 .text,
 .house-text {
     color: white;
@@ -169,6 +166,7 @@ img {
     height: 52.67px;
 }
 
+/* total value text  */
 .text p {
     height: 100%;
     padding: 10px 0 12px 0;
@@ -176,6 +174,7 @@ img {
     align-self: center;
 }
 
+/* houses total value text  */
 .house-text p {
     height: 100%;
     padding: 10px 0 12px 0;
@@ -183,12 +182,14 @@ img {
     align-self: center;
 }
 
+/* position of balance display  */
 #balance {
     position: absolute;
     top: 41%;
     left: 2%;
 }
 
+/* header after game over  */
 #game-restart h1 {
     color: white;
 }

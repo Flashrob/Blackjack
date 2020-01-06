@@ -40,13 +40,14 @@ const displayCards = function () {
 
 //display the score
 const display = function () {
-    //select text divs and reset content for all player
+    //select text divs and reset totalValue content for all players
     const text = document.querySelectorAll(".text")
 
     text.forEach(function (item) {
         item.innerHTML = ""
     })
-
+    
+    //reset game state message
     if (game.playerTurn === 0) {
         message.textContent = ""
     }
@@ -54,9 +55,9 @@ const display = function () {
 
     //loop through all players
     for (let i = 0; i < game.players.length - 1; i++) {
-        //create p for each player
+        //create total value paragraph for each player
         const p = document.createElement("p")
-        //set content to player cards value
+        //set content to player cards total value
         p.textContent = `${game.players[i].totalValue}`
         //append paragraph to player's text div
         text[i].appendChild(p)
@@ -73,16 +74,21 @@ const display = function () {
     textHouse.appendChild(pHouse)
     //display the current balance
     balance.innerHTML = `Your Balance: ${game.players[0].balance}`
+
     //display balance for ai
     //push balance into an array
     const balanceArray = []
     for (let i = 1; i < game.players.length - 1; i++) {
         balanceArray.push(`Balance: ${game.players[i].balance}`)
     }
+
+        //TWO LOOPS BECAUSE PLAYER INDEX STARTS AT 1, BUT BALANCE INDEX STARTS AT 0
+
     //render each balance into their respective h3
     for (let j = 0; j < balanceArray.length; j++) {
         aiBalance[j].innerHTML = balanceArray[j]
     }
+
     //display the cards
     displayCards()
 }
@@ -158,9 +164,11 @@ const displayNewValue = function () {
 //display card after bet
 const activateCardDisplay = function () {
     const allImages = document.querySelectorAll("img")
+    
     allImages.forEach(function (item) {
         item.classList.remove("d-none")
     })
+
     const text = document.querySelector(".text p")
     text.textContent = `${game.players[0].totalValue}`
     const houseText = document.querySelector(".house-text p")

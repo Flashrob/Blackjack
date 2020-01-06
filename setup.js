@@ -1,10 +1,7 @@
 // TODO
-// ADD OTHER PLAYERS
-// - Work on betting and displaying/adjusting balance for AI
-    // - Only calculate winning AFTER house has made its move
-    // - When lose, win, blackjack
-// ADD RULES LIGHTBOX
 // ADD EXTRA FEATURES
+// REMOVE BUGS
+// MAKE GAME OVER NOT RELOAD THE PAGE, BUT RESET EVERYTHING
 // MAKE LAYOUT RESPONSIVE
 
 let deck = []
@@ -96,7 +93,6 @@ const startGame = function () {
 //initial input form for player name!
 const nameInput = function () {
     const form = document.querySelector("#name-input")
-
     form.addEventListener("submit", function(e){
         //prevent page reload
         e.preventDefault()

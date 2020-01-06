@@ -1,5 +1,5 @@
+//make bet buttons do something and starts the game once a bet is made
 const betEvent = function () {
-
     //display gameboard
     document.querySelector(".game-board").classList.remove("d-none")
 

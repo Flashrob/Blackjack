@@ -72,7 +72,7 @@ const dealerAi = function () {
             if (blackjack()){
                 displayNewHand()
             }
-            //if not blackjack, no game over, check for loss
+            //if not blackjack and turn isnt over, check for loss in case player has not lost yet
             if (!game.turnOver && !game.players[0].loss) {
                 checkForLoss()
             }
@@ -91,7 +91,5 @@ const dealerAi = function () {
             determineAiWinner()
         }
     }
-
-    
 }
 
