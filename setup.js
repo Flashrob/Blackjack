@@ -13,7 +13,7 @@ const createDeck = function (amount=1) {
     const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
     const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
     deck = []
-    
+
     //amount gives the number of card decks in a full deck
     for (let k = 0; k < amount; k++){
     //loop through suits and values arrays, to create a full deck in the deck object

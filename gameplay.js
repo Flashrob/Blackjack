@@ -12,7 +12,7 @@ const stand = function () {
     const stand = document.querySelector("#stand")
     stand.addEventListener("click", function () {
         //on click, if not game over, next player turn, start AI and dealer AI
-        if (game.turnOver === false) {
+        if (!game.turnOver) {
             if (game.playerTurn === 0) {
                 game.playerTurn++
                 //draw cards for AI
@@ -52,9 +52,9 @@ const hitButton = function () {
 
 //next hand button click function
 const dealNewHand = function () {
+
     const retry = document.querySelector("#retry")
     retry.addEventListener("click", function () {
-
         //on click reset game state
         game.players[0].loss = false
         game.playerTurn = 0
@@ -65,7 +65,6 @@ const dealNewHand = function () {
             game.players[i].totalValue = 0
             game.players[i].cards = []
         }
-
         //create, shuffle the deck and deal two cards
         createDeck(5)
         //display score

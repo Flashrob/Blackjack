@@ -2,9 +2,9 @@ const playerAi = function () {
 
     const aiBet = function (player, betAmount) {
         //player bets of betAmount value
-        game.players[player].betMade = true
-        game.players[player].currentBet = betAmount
-        game.players[player].balance = game.players[player].balance - game.players[player].currentBet
+            game.players[player].betMade = true
+            game.players[player].currentBet = betAmount
+            game.players[player].balance = game.players[player].balance - game.players[player].currentBet
     }
 
     const aiDraw = function (player, drawLimit) {
