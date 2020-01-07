@@ -77,7 +77,10 @@ const dealNewHand = function () {
         }
 
         //check for instant win after dealing cards
-        blackjack()
+        //check for gameOver if blackjack for house
+        if(blackjack()){
+            gameOver()
+        }
         //enable bet and disable action after new hand was dealt
         enableBetButtons()
         disableActionButtons()

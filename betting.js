@@ -20,7 +20,7 @@ const betEvent = function () {
     disableActionButtons()
 
     //display value and blackjackmessage
-    const displayValueAndBlackjack = function(){
+    const displayValueAndBlackjack = function () {
         //display total value
         message.classList.remove("d-none")
         displayNewValue()
@@ -31,7 +31,7 @@ const betEvent = function () {
     }
 
     //display Balance
-    const displayBalance = function(){
+    const displayBalance = function () {
         //set new balance
         player.balance = player.balance - player.currentBet
         //display balance
@@ -47,15 +47,14 @@ const betEvent = function () {
     //event listener for $10 Button
     ten.addEventListener("click", function (e) {
         if (!player.betMade) {
-            //display value and blackjack message
-            displayValueAndBlackjack()
-
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((player.balance - 10) >= 0) {
                 player.currentBet = 10
                 displayBalance()
                 //makes bet buttons disabled and activates action buttons
                 controlButtonActivity()
+                //display value and blackjack message
+                displayValueAndBlackjack()
                 //if game hasnt started yet, start the game
                 if (!game.gameStart) {
                     startGame()
@@ -73,13 +72,14 @@ const betEvent = function () {
     //event listener for $25 Button
     twentyFive.addEventListener("click", function () {
         if (!player.betMade) {
-            //display value and blackjack message
-            displayValueAndBlackjack()
+
 
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((player.balance - 25) >= 0) {
                 player.currentBet = 25
                 displayBalance()
+                //display value and blackjack message
+                displayValueAndBlackjack()
                 //makes bet buttons disabled and activates action buttons
                 controlButtonActivity()
                 //if game hasnt started yet, start the game
@@ -98,13 +98,14 @@ const betEvent = function () {
     //event listener for $50 Button
     fifty.addEventListener("click", function () {
         if (!player.betMade) {
-            //display value and blackjack message
-            displayValueAndBlackjack()
+
 
             //if bet amount doesnt go beyond 0, set bet amount and subtract from balance
             if ((player.balance - 50) >= 0) {
                 player.currentBet = 50
                 displayBalance()
+                //display value and blackjack message
+                displayValueAndBlackjack()
                 //makes bet buttons disabled and activates action buttons
                 controlButtonActivity()
                 //if game hasnt started yet, start the game
@@ -123,12 +124,11 @@ const betEvent = function () {
     //event listener for All-in Button
     all.addEventListener("click", function () {
         if (!player.betMade) {
-            //display value and blackjack message
-            displayValueAndBlackjack()
-
             //all in, bet amount is full balance and balance is set to 0
             player.currentBet = player.balance
             displayBalance()
+            //display value and blackjack message
+            displayValueAndBlackjack()
             //makes bet buttons disabled and activates action buttons
             controlButtonActivity()
             //if game hasnt started yet, start the game

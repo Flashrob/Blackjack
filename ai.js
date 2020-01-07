@@ -14,6 +14,7 @@ const playerAi = function () {
             display()
             playerAi()
         } else {
+            //if value higher than drawLimit, increase player Turn
             game.playerTurn++
             playerAi()
         }
@@ -27,6 +28,7 @@ const playerAi = function () {
             //AI 1 bet 10
             aiBet(game.playerTurn, 10)
         }
+        //AI draws a card if below or 17
         aiDraw(game.playerTurn, 17)
     }
     //computer AI 2
@@ -36,6 +38,7 @@ const playerAi = function () {
             //AI 2 bet 25
             aiBet(game.playerTurn, 25)
         }
+        //AI draws a card if below or 16
         aiDraw(game.playerTurn, 16)
     }
     // //computer AI 3
@@ -45,6 +48,7 @@ const playerAi = function () {
             //AI 3 bet 50
             aiBet(game.playerTurn, 50)
         }
+        //AI draws a card if below or 15
         aiDraw(game.playerTurn, 15)
     }
 }
