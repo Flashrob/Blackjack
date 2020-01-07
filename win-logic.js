@@ -21,6 +21,7 @@ const adjustForAce = function (player) {
     }
 }
 
+//function for ending the turn once player has lost or won
 const endTurn = function () {
     //turn over since over 21
     game.turnOver = true
