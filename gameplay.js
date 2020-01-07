@@ -67,7 +67,7 @@ const dealNewHand = function () {
         }
 
         //create, shuffle the deck and deal two cards
-        createDeck()
+        createDeck(5)
         //display score
         display()
 
@@ -99,7 +99,7 @@ const gameOver = function () {
         document.querySelector("#retry").classList.add("d-none")
         setTimeout(function () {
             //hide game board
-            document.querySelector(".game-board").classList.toggle("d-none")
+            document.querySelector(".game-board").classList.add("d-none")
             //create div for restart button and game over header
             const restartDiv = document.createElement("div")
             restartDiv.id = "game-restart"
@@ -118,7 +118,7 @@ const gameOver = function () {
             restartDiv.appendChild(restartButton)
             document.body.appendChild(restartDiv)
             //hide the notification panel
-            document.querySelector(".notification").classList.toggle("d-none")
+            document.querySelector(".notification").classList.add("d-none")
         }, 1500)
     }
 }

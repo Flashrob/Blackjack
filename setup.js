@@ -9,10 +9,13 @@ const message = document.querySelector(".message")
 const balance = document.querySelector("#balance")
 const aiBalance = document.querySelectorAll(".ai-balance")
 
-const createDeck = function () {
+const createDeck = function (amount=1) {
     const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
     const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
     deck = []
+    
+    //amount gives the number of card decks in a full deck
+    for (let k = 0; k < amount; k++){
     //loop through suits and values arrays, to create a full deck in the deck object
     for (let i = 0; i < values.length; i++) {
         for (let j = 0; j < suits.length; j++) {
@@ -38,7 +41,7 @@ const createDeck = function () {
             deck.push(card)
             game.turnOver = false
         }
-    }
+    }}
     //shuffle 1000 times
     shuffleDeck(1000)
     //deal Cards
@@ -70,7 +73,7 @@ const dealCards = function () {
 
 const startGame = function () {
     //create, shuffle the deck and deal two cards
-    createDeck()
+    createDeck(5)
     //display score
     display()
     //event listener for hit button

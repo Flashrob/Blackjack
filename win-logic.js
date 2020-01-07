@@ -21,7 +21,7 @@ const adjustForAce = function (player) {
     }
 }
 
-const endTurn = function (){
+const endTurn = function () {
     //turn over since over 21
     game.turnOver = true
     //player lost, makes Ai still draw afterwards
@@ -108,37 +108,38 @@ const checkForLoss = function () {
 
 const determineWinner = function () {
     const house = game.players.length - 1
+    const player = game.players[0]
     //if player has higher value than dealer, player wins, game over
-    if (game.players[0].totalValue > game.players[house].totalValue && game.players[0].totalValue < 22) {
+    if (player.totalValue > game.players[house].totalValue && player.totalValue < 22) {
         //display next hand button
         displayNewHand()
         game.turnOver = true
         //winning!
         profit()
         //reset bet amount
-        game.players[0].currentBet = 0
+        player.currentBet = 0
         message.textContent = "You won!"
         return true
 
         //if player has lower value than dealer, dealer wins, game over
-    } else if (game.players[0].totalValue < game.players[house].totalValue && game.players[0].totalValue < 22) {
+    } else if (player.totalValue < game.players[house].totalValue && player.totalValue < 22) {
         //display next hand button
         displayNewHand()
         game.turnOver = true
         //reset bet amount
-        game.players[0].currentBet = 0
+        player.currentBet = 0
         message.textContent = "House won!"
         gameOver()
         return true
 
         //if player and dealer have the same value, push(draw) and return the bets.
-    } else if (game.players[0].totalValue === game.players[house].totalValue && game.players[0].totalValue < 22) {
+    } else if (player.totalValue === game.players[house].totalValue && player.totalValue < 22) {
         //display next hand button
         displayNewHand()
         game.turnOver = true
         //give back the bet and reset bet amount
-        game.players[0].balance = game.players[0].balance + game.players[0].currentBet
-        game.players[0].currentBet = 0
+        player.balance = player.balance + player.currentBet
+        player.currentBet = 0
 
         message.textContent = "Push! Draw!"
         return true
@@ -191,7 +192,7 @@ const determineAiWinner = function () {
                     //give back the bet and reset bet amount
                     game.players[i].balance = game.players[i].balance + game.players[i].currentBet
                     game.players[i].currentBet = 0
-                                }
+                }
             }
         }
     }
