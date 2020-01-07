@@ -64,4 +64,5 @@ git clone https://github.com/Flashrob/Blackjack.git
 4. Selective utilization of libraries
 5. Understanding very basic AI
 6. Appreciation for game development
-  * IT IS **NOT** EASY!
+
+   * IT IS **NOT** EASY!
