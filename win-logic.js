@@ -46,6 +46,18 @@ const blackjack = function () {
             }
         }
     }
+    //check if player AND house have blackjack
+    if (game.players[0].totalValue === 21 && game.players[house].totalValue === 21){
+        //display next hand button
+        displayNewHand()
+        game.turnOver = true
+        //give back the bet and reset bet amount
+        player.balance = player.balance + player.currentBet
+        game.players[0].currentBet = 0
+        message.textContent = "Push! Draw!"
+        return true
+    }
+
     //check if player or house has blackjack
     if (game.players[0].totalValue === 21 || game.players[house].totalValue === 21) {
 
